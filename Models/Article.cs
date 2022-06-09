@@ -20,6 +20,7 @@ namespace Models
 
         [Required]
         public string Text { get; set; }
+        public List<ArticleComment> Comments { get; set; }
 
     }
 }

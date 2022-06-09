@@ -19,5 +19,7 @@ namespace Data.D
         public DbSet<ArticleComment> ArticleComments { get; set; }
         public DbSet<SubCategory> subCategories { get; set; }
         public DbSet<ProductProps> productProps { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }
