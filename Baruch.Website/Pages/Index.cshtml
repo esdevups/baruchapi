@@ -1,0 +1,425 @@
+﻿@page
+@model Baruch.Pages.IndexModel
+@{
+    
+}
+
+<!-- hero section -->
+    <section class="hero mx-auto overflow-hidden">
+
+        <div class="slider">
+
+            <!-- slide 1 -->
+            <div class="slide">
+                <img
+                    src="/Site/img/ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"
+                    alt=""
+                />
+            </div>
+
+            <!-- slide 2 -->
+            <div class="slide">
+                <img
+                    src="/Site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
+                    alt=""
+                />
+            </div>
+
+            <!-- slide 3 -->
+            <div class="slide">
+                <img
+                    src="/Site/img/ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"
+                    alt=""
+                />
+            </div>
+
+            <!-- slide 4 -->
+            <div class="slide">
+                <img
+                    src="/Site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
+                    alt=""
+                />
+            </div>
+
+            <!-- Control buttons -->
+            <button class="btn btn-next bg-black text-white"><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i></button>
+            <button class="btn btn-prev text-white bg-black"><i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i></button>
+        </div>
+
+
+
+    </section>
+    <section class="flex flex-col">
+        <div class="container relative mx-auto flex justify-between p-7 border-b ">
+            <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+            <a href="">
+                <h3 class="text-2xl text-gray-500">کالا های برتر</h3>
+            </a>
+
+            <a
+                class="text-md text-blue-500"
+                href=""
+            > مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
+        </div>
+
+        </div>
+
+        <div class="slide-container  container">
+            <div
+                class="slide-right p-5 cursor-pointer"
+                data-carousel="c1"
+
+            ><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i></div>
+            <section
+                class="container-1400 min-w-64 scroll-smooth"
+                id="c1"
+            >
+            @foreach(var i in Model.Products)
+            {
+                 <div class="thumbnail">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/@i.ImageName"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">@i.Title</h2>
+                        </a>
+                        <p> <span>300,000</span> @i.Price</p>
+                        <a asp-page="/Cart/AddTocart" asp-route-id="@i.Id"
+                       
+                            class="bg-red-500 text-white"
+                            
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+            }
+               
+              
+            </section>
+            <div
+                class="slide-left p-5 cursor-pointer"
+                data-carousel="c1"
+            ><i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i></div>
+        </div>
+
+    </section>
+
+    <section class="flex flex-col">
+        <div class="container relative mx-auto flex justify-between p-7 border-b ">
+            <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+            <a  href="">
+                <h3 class="text-2xl text-gray-500">کالا های برتر</h3>
+            </a>
+
+            <a
+                class="text-md text-blue-500"
+                href=""
+            > مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
+        </div>
+
+        </div>
+
+        <div class="slide-container container">
+            <div
+                class="slide-right p-5 cursor-pointer"
+                data-carousel="c2"
+
+            ><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i></div>
+            <section
+                class="scroll-smooth container-1400 min-w-64"
+                id="c2"
+            >
+
+                <div class="thumbnail">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img
+                        class="w-60 h-52"
+                        src="/Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                        class="bg-red-500 text-white"
+                        href="#"
+                    >
+                     
+                    افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img
+                        class="w-60 h-52"
+                        src="/Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail border-t-0">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail border-t-0">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail border-t-0">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail border-t-0">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail border-t-0">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                <div class="thumbnail border-t-0">
+                    <img
+                        class="w-60 h-52"
+                        src="./Site/img/index.jpg"
+                        alt=""
+                    >
+                    <div class="product-details">
+                        <a href="">
+                            <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
+                        </a>
+                        <p> <span>300,000</span> 600,000ریال</p>
+                        <a
+                            class="bg-red-500 text-white"
+                            href="#"
+                        >افزودن به سبد خرید</a>
+                    </div>
+                </div>
+            </section>
+            <div
+                class="slide-left p-5 cursor-pointer"
+                data-carousel="c2"
+            ><i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i></div>
+        </div>
+
+    </section>
+   
+    <section class="flex flex-col">
+        <div class="container relative mx-auto flex justify-between p-7 border-b">
+            <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+            <a href="">
+                <h3 class="text-2xl text-gray-500">مقالات مسفو </h3>
+            </a>
+
+            <a
+                class="text-md text-blue-500"
+                href=""
+            > مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
+        </div>
+
+        </div>
+        <section class="container grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-5 text-gray-700 justify-center">
+            <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
+               <a href="">
+
+                   <h3 class="mt-1 px-2 mb-5">1فواید استفاده از ظروف مسی </h3>
+               </a>
+                <div class="flex justify-between px-2 py-2">
+
+                    <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
+                    <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                </div>
+            </div>
+            <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                <img class="w-full h-52  rounded-t-lg" src="/Site/img/mess.jpg" alt="">
+               <a href="">
+
+                   <h3 class="mt-1 px-2 mb-5">2فواید استفاده از ظروف مسی </h3>
+               </a>
+                <div class="flex justify-between px-2 py-2">
+
+                    <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
+                    <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                </div>
+            </div>
+            <div class="bg-white lg:mx-2 mx-5 my-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
+               <a href="">
+
+                   <h3 class="mt-1 px-2 mb-5">3فواید استفاده از ظروف مسی </h3>
+               </a>
+                <div class="flex justify-between px-2 py-2">
+
+                    <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
+                    <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                </div>
+            </div>
+            <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
+               <a href="">
+
+                   <h3 class="mt-1 px-2 mb-5">4فواید استفاده از ظروف مسی </h3>
+               </a>
+                <div class="flex justify-between px-2 py-2">
+
+                    <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
+                    <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                </div>
+            </div>
+            <div class="bg-white lg:mx-2 mx-5 my-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
+               <a href="">
+
+                   <h3 class="mt-1 px-2 mb-5">5فواید استفاده از ظروف مسی </h3>
+               </a>
+                <div class="flex justify-between px-2 py-2">
+
+                    <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
+                    <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                </div>
+            </div>
+            <div class="bg-white lg:mx-2 mx-5 my-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
+               <a href="">
+
+                   <h3 class="mt-1 px-2 mb-5">6فواید استفاده از ظروف مسی </h3>
+               </a>
+                <div class="flex justify-between px-2 py-2">
+
+                    <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
+                    <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                </div>
+            </div>
+        </section>
+        
+
+    </section>
+
+

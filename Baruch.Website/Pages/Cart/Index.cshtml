@@ -1,0 +1,88 @@
+﻿@page
+@model Mesfo.Pages.Cart.IndexModel
+@{
+}
+<div class="container mx-auto grid grid-cols-5">
+
+    <main class="col-span-5 lg:col-span-3 border m-2 shadow rounded-lg mb-32 lg:mb-96">
+        
+        <section class="">
+            <div class="container relative mx-auto flex flex-col justify-between px-4 py-2 border-b">
+                
+                <div>
+                    <h3 class="text-2xl text-gray-700">سبد خرید </h3>
+                </div>
+                <ul>
+                    @foreach(var i in Model.orders)
+                    {
+                         <li class="w-full py-2 bg-gray border-b flex justify-between relative">
+                        <div class="flex">
+
+                            <img class="w-28" src="/Site/img/@i.ImageName" alt="">
+                            <div class="flex flex-col mr-2">
+                            <h3 class="text-lg text-gray-600 mb-2">@i.Title</h3>
+                            <div class="flex items-start">
+                                <form asp-page-handler="Increment" method="post"  >
+                                <button type="submit" class="p-2 border rounded-r-lg">+</button>
+                                <input type="hidden" name="id" value="@i.OrderDetailId" />
+                                </form>
+
+                                <div class="p-2 border">@i.Count</div>
+                                <form asp-page-handler="Decrement" method="post"  >
+                                <input type="hidden" name="id" value="@i.OrderDetailId" />
+
+                                <button class="p-2 border rounded-l-lg">-</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="flex items-end h-8 absolute bottom-0 left-0">
+                            <p class="text-lg text-green-800"> @i.sum.ToString("#,0") تومان</p>
+                        </div>
+                    </li>
+                   
+                    }
+                   
+                </ul>
+                
+                
+            </div>
+            <ul>
+
+            </ul>
+        </section>
+    </main>
+    <div class="col-span-5 lg:col-span-2">
+
+    <aside class=" border m-2 shadow rounded-lg">
+        <ul class="px-4">
+            <li class="mb-2 pb-2 border-b">
+                <div class="text-lg pt-2">
+                    مبلغ قابل پرداخت:
+                </div>
+                <div class="text-left text-lg text-green-800">@Model.orders.Select(i=>i.sum).Sum().ToString("#,0") تومان</div>
+                
+            </li>
+            <li class="mb-2 pb-2 border-b">
+                <div class="text-lg pt-2">
+                    وزن خالص:
+                </div>
+                <div class="text-left text-lg text-green-800">5 کیلوگرم</div>
+                
+            </li>
+            <li class="mb-2 pb-2 border-b">
+                <div class="text-lg pt-2">
+                   ارسال از:
+                </div>
+                <div class="text-left text-lg text-green-800">یک روز کاری</div>
+                
+            </li>
+        </ul>
+        <div class="flex justify-center py-5">
+            <button class="bg-red-500 hover:bg-red-600 text-white p-3 w-4/6 rounded text-lg">پرداخت و ثبت سفارش</button>
+
+        </div>
+    </aside>
+</div>
+
+</div>
