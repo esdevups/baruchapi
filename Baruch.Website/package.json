@@ -1,0 +1,11 @@
+{
+  "name": "mesfo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build-css": " npx tailwindcss -i Styles/App.css -o wwwroot/Site/css/App.css --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}

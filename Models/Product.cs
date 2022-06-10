@@ -28,6 +28,9 @@ namespace Models
         [ForeignKey("subCategory")]
         public int SubCategoryId { get; set; }
 
+        public bool IsSend { get; set; }
+        public string PostCode { get; set; }
+
         public SubCategory subCategory { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
         public List<ProductComment> Comments { get; set; }

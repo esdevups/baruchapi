@@ -69,6 +69,7 @@ namespace Operations.FileOperation
         {
             string filePath = Path.Combine(Directory.GetCurrentDirectory(),
                         "wwwroot/images", filename);
+
             try
             {
                 if (File.Exists(filePath))

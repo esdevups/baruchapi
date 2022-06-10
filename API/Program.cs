@@ -2,6 +2,7 @@ using Data.D;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Operations.FileOperation;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +28,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("OurVerifyTopLearn"))
                    };
                });
+builder.Services.AddTransient<FileOp, FileOp>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

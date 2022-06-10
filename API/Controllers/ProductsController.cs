@@ -8,18 +8,21 @@ using Microsoft.EntityFrameworkCore;
 using Models;
 using Data;
 using Microsoft.AspNetCore.Authorization;
+using Operations.FileOperation;
 
 namespace BaruchApi.Controllers
 {
-    [Authorize(Roles ="admin")]
+    [Authorize(Roles = "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly FileOp _file;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context,FileOp file)
         {
+            _file = file;
             _context = context;
         }
 
@@ -27,10 +30,10 @@ namespace BaruchApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-          if (_context.Products == null)
-          {
-              return NotFound();
-          }
+            if (_context.Products == null)
+            {
+                return NotFound();
+            }
             return await _context.Products.ToListAsync();
         }
 
@@ -38,11 +41,11 @@ namespace BaruchApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-          if (_context.Products == null)
-          {
-              return NotFound();
-          }
-            var product = await _context.Products.Include(c=>c.Comments).ThenInclude(c=>c.User.UserName).SingleOrDefaultAsync(i=>i.Id == id);
+            if (_context.Products == null)
+            {
+                return NotFound();
+            }
+            var product = await _context.Products.Include(c => c.Comments).ThenInclude(c => c.User.UserName).SingleOrDefaultAsync(i => i.Id == id);
 
             if (product == null)
             {
@@ -88,10 +91,10 @@ namespace BaruchApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-          if (_context.Products == null)
-          {
-              return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
-          }
+            if (_context.Products == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
+            }
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
@@ -121,6 +124,32 @@ namespace BaruchApi.Controllers
         private bool ProductExists(int id)
         {
             return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        [HttpPost("Uploadfile/{Productid}")]
+        public async Task<IActionResult> File(int Productid)
+        {
+            HttpResponseMessage result = null;
+            var httpRequest = HttpContext.Request;
+            if (httpRequest.Form.Files.Count > 0)
+            {
+                await _file.UploadFile(httpRequest.Form.Files, Productid);
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        [HttpDelete("Deletefile/{filename}")]
+        public async Task<IActionResult> dFile(string filename)
+        {
+            if (await _file.DeleteFile(filename))
+                return Ok();
+            else
+                return NotFound();
+                
+
         }
     }
 }

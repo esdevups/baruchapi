@@ -117,7 +117,26 @@ namespace BaruchApi.Controllers
 
             return NoContent();
         }
+        [HttpPost("Send/{productid}/{PostCode}")]
+        public async Task<IActionResult> Send(int productid,string PostCode)
+        {
 
+            try
+            {
+                var product = await _context.Products.FindAsync(productid);
+
+                product.PostCode = PostCode;
+                product.IsSend = true;
+                _context.Entry(product).State = EntityState.Modified;
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
+      
+        }
         private bool CategoryExists(int id)
         {
             return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();

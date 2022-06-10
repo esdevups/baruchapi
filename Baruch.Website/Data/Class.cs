@@ -1,6 +1,5 @@
 ﻿namespace Baruch.Website.Data
 {
-    public  class Class
-    {
-    }
+    //build a class that sums two numbers
+    
 }

@@ -1,0 +1,91 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: "yekan";
+    src: url("../fonts/BYekan/BYekan+.ttf");
+}
+
+@font-face {
+    font-family: "yekanbold";
+    src: url("../fonts/BYekan/BYekan+\ Bold.ttf");
+}
+
+@font-face {
+    font-family: "smooch";
+    src: url("../fonts/Smooch/Smooch-Regular.ttf");
+}
+
+.badge {
+    @apply p-1 rounded-md text-white;
+}
+
+.container-1400 {
+    max-width: 1400px;
+}
+
+.popover-backdrop {
+    @apply z-30 fixed top-0 left-0 w-screen h-screen;
+}
+
+.cat-list-item {
+    @apply py-1 my-1 px-3 border-b-white hover:border-red-300 border-b border-r-2 w-full;
+}
+
+.bg-mess {
+    background-image: url('../img/mess.jpg');
+}
+
+.product-carousel-btn {
+    @apply absolute top-32;
+}
+
+.product-carousel-btn-right {
+    @apply right-0;
+}
+
+.product-carousel-btn-left {
+    @apply left-0;
+}
+
+.w-200-px {
+    width: 200px;
+}
+
+.slider-item {
+    @apply w-56 bg-white text-gray-700;
+}
+
+.search-form-hidden {
+    @apply scale-x-0 w-0;
+}
+
+.search-form {
+    transform-origin: right;
+}
+
+.search-form-shown {
+    @apply transform scale-x-100 transition-transform duration-300 ease-linear;
+}
+
+.burger-backdrop {
+    @apply fixed top-0 left-0 bg-black w-screen h-screen z-40 opacity-20;
+}
+
+.min-w-64 {
+    min-width: 16rem;
+}
+
+#ascending:checked + #ascending-label {
+    @apply bg-gray-800 text-white;
+}
+
+#descending:checked + #descending-label {
+    @apply bg-gray-800 text-white;
+}
+
+.comment-modal {
+    @apply fixed justify-center items-center top-0 left-0 w-full h-full z-30;
+}
