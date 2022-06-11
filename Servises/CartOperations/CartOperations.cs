@@ -175,7 +175,7 @@ namespace Servises
                     case "increment":
                         if (orderd.Count >= Cunt)
                         {
-                            if (product.Quantity >= orderd.Count)
+                            if (product.Quantity > orderd.Count)
                             {
                                 orderd.Count += Cunt;
 
@@ -221,6 +221,7 @@ namespace Servises
 
                 _ctx.OrderDetails.Attach(orderd).State = EntityState.Modified;
                 await _ctx.SaveChangesAsync();
+                UpdateSumOrder(orderd.OrderId);
                 return "عملیات با موفقیت انجام شد";
             }
             catch (Exception)

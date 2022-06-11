@@ -67,7 +67,7 @@
                 <div class="text-lg pt-2">
                     وزن خالص:
                 </div>
-                <div class="text-left text-lg text-green-800">5 کیلوگرم</div>
+                <div class="text-left text-lg text-green-800"> کیلوگرم</div>
                 
             </li>
             <li class="mb-2 pb-2 border-b">
@@ -79,7 +79,10 @@
             </li>
         </ul>
         <div class="flex justify-center py-5">
-            <button class="bg-red-500 hover:bg-red-600 text-white p-3 w-4/6 rounded text-lg">پرداخت و ثبت سفارش</button>
+            <form asp-page-handler="Payment" method="post">
+            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white p-3 w-4/6 rounded text-lg">پرداخت و ثبت سفارش</button>
+
+            </form>
 
         </div>
     </aside>

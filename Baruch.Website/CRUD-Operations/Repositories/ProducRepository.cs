@@ -100,7 +100,16 @@ namespace Baruch
         {
             try
             {
-                var product = await _ctx.Products.Include(c=>c.subCategory).Include(p => p.Comments).ThenInclude(p => p.User).Include(p => p.Images).SingleOrDefaultAsync(p => p.Id == id);
+                var product = await _ctx.Products
+                    .Include(p=>p.labels)
+                    .Include(p=>p.productProps)
+                    .Include(o=>o.Images)
+                    .Include(c=>c.subCategory)
+                    .ThenInclude(o=>o.Category)
+                    .Include(p => p.Comments)
+                    .ThenInclude(p => p.User)
+                    .Include(p => p.Images)
+                    .SingleOrDefaultAsync(p => p.Id == id);
                
 
                 return product;
