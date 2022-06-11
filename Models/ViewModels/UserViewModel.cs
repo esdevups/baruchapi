@@ -8,21 +8,19 @@ namespace Models.ViewModels
 {
     public class UserViewModel
     {
-      
 
+        public string id{ get; set; }
         [Required, MaxLength(50)]
 
-        public string FirstName { get; set; }
-        [Required, MaxLength(50)]
-      
-        public string LastName { get; set; }
+        public string UserName { get; set; }
+    
         [Required, MaxLength(50)]
      
         public string Email { get; set; }
-        [Required, MaxLength(11)]
+        [Required]
     
         public string Phone { get; set; }
-        [Required,MinLength(8),MaxLength(250)]
+        [Required]
         public string Password { get; set; }
 
         [Required, MaxLength(400)]

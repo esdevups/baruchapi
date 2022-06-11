@@ -45,7 +45,7 @@ namespace BaruchApi.Controllers
             {
                 return NotFound();
             }
-            var product = await _context.Products.Include(c => c.Comments).ThenInclude(c => c.User.UserName).SingleOrDefaultAsync(i => i.Id == id);
+            var product = await _context.Products.Include(p=>p.productProps).Include(c => c.Comments).ThenInclude(c => c.User.UserName).Include(p => p.labels).SingleOrDefaultAsync(i => i.Id == id);
 
             if (product == null)
             {
@@ -133,6 +133,7 @@ namespace BaruchApi.Controllers
             if (httpRequest.Form.Files.Count > 0)
             {
                 await _file.UploadFile(httpRequest.Form.Files, Productid);
+                
                 return Ok();
             }
             else

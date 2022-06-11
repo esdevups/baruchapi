@@ -19,8 +19,10 @@ namespace Models
 
         [Required]
         public int Sum { get; set; }
+        public string Code { get; set; }
 
         public bool IsFinaly { get; set; }
+        public bool IsSend { get; set; }
 
         public AppUser User { get; set; }
 

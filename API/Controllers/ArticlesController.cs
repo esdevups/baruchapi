@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Models;
+using Operations.FileOperation;
 
 namespace BaruchApi.Controllers
 {
@@ -18,12 +19,13 @@ namespace BaruchApi.Controllers
     public class ArticlesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly FileOp _file;
 
-        public ArticlesController(ApplicationDbContext context)
+        public ArticlesController(ApplicationDbContext context, FileOp file)
         {
+            _file = file;
             _context = context;
         }
-
         // GET: api/Articles
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Article>>> GetArticles()
@@ -43,7 +45,7 @@ namespace BaruchApi.Controllers
           {
               return NotFound();
           }
-            var article = await _context.Articles.Include(o=>o.Comments).ThenInclude(c=>c.User.UserName).SingleOrDefaultAsync(i => i.Id == id);
+            var article = await _context.Articles.Include(o=>o.Comments).ThenInclude(c=>c.User.UserName).Include(p => p.labels).SingleOrDefaultAsync(i => i.Id == id);
 
             if (article == null)
             {
@@ -122,6 +124,35 @@ namespace BaruchApi.Controllers
         private bool ArticleExists(int id)
         {
             return (_context.Articles?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [HttpPost("Uploadfile")]
+        public async Task<IActionResult> File()
+        {
+            HttpResponseMessage result = null;
+            var httpRequest = HttpContext.Request;
+
+            if (httpRequest.Form.Files.Count > 0)
+            {
+
+              return Ok(await _file.UploadSingleFile(httpRequest.Form.Files[0]));
+               
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        [HttpDelete("Deletefile/{filename}")]
+        public async Task<IActionResult> dFile(string filename)
+        {
+            if (await _file.DeleteFile(filename))
+                return Ok();
+            else
+                return NotFound();
+
+
         }
     }
 }

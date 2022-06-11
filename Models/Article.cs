@@ -22,5 +22,8 @@ namespace Models
         public string Text { get; set; }
         public List<ArticleComment> Comments { get; set; }
 
+        public List<ArticleLabel> labels { get; set; }
+        
+
     }
 }

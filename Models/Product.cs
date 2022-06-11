@@ -28,13 +28,13 @@ namespace Models
         [ForeignKey("subCategory")]
         public int SubCategoryId { get; set; }
 
-        public bool IsSend { get; set; }
-        public string PostCode { get; set; }
+       
 
         public SubCategory subCategory { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
         public List<ProductComment> Comments { get; set; }
         public List<Image> Images{ get; set; }
         public List<ProductProps> productProps{ get; set; }
+        public List<ProductLabel>  labels{ get; set; }
     }
 }
