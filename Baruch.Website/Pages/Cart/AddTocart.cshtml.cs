@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace Mesfo.Pages
 {
-        [Authorize()]
+        [Authorize]
 
     public class AddTocartModel : PageModel
     {
@@ -16,9 +16,12 @@ namespace Mesfo.Pages
         {
             _CartOperation = cartOperations;
         }
+        
         public async Task<IActionResult> OnGet(int id)
         {
-          await  _CartOperation.AddToCart(id, User.FindFirstValue(ClaimTypes.NameIdentifier), 1);
+          
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+          await  _CartOperation.AddToCart(id, userid, 1);
 
             return RedirectToPage("/Cart/Index");
         }

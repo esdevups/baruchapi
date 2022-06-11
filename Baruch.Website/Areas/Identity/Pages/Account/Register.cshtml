@@ -3,12 +3,12 @@
 @{
     ViewData["Title"] = "Register";
 
-    Layout = null;
+
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
+
+@*<div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <h2>Create a new account.</h2>
@@ -16,7 +16,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-                <label asp-for="Input.Email"></label>
+            
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating">
@@ -27,41 +27,121 @@
             <div class="form-floating">
                 <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
                 <label asp-for="Input.ConfirmPassword"></label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <span  class="text-red-500">asdasds</span>
             </div>
             <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
         </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
+    </div>*@
+<div class="flex justify-center">
+
+    <main class="xl:w-1/3 lg:w-1/2 w-full my-40 bg-white p-5 flex flex-col justify-center rounded-lg shadow-lg mx-auto">
+        <h1 class="text-center text-lg mb-5">ثبت نام در سایت</h1>
+        <form class="w-full flex justify-center flex-col" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post"  >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="flex items-center flex-col">
+                <div class="w-5/6">
+
+                    <label for="">نام و نام خانوادگی</label>               
+                    <input asp-for="Input.Email" class="border p-2 mb-5 focus:outline-none focus:border-gray-500 w-full " type="text" >
+                </div>
+         
+                <div class="w-5/6">
+
+                    <label for="">آدرس ایمیل</label>
+                    <input asp-for="Input.UserName"class="border p-2 mb-5 focus:outline-none focus:border-gray-500 w-full " type="email">
+                    <span asp-validation-for="Input.UserName" class="text-red-500  mb-5"></span>
+                
+                </div>
+              
+                 <div class="w-5/6">
+
+                    <label for="">شماره تلفن</label>
+                    <input asp-for="Input.Phone" class="border p-2 mb-5 focus:outline-none focus:border-gray-500 w-full " type="number">
+                    <span asp-validation-for="Input.Phone" class="text-red-500  mb-5"></span>
+
+                </div>
+                <div class="w-5/6">
+                    
+                    <label for="state">* استان :</label>
+                    <select asp-for="Input.ostan" class="w-full bg-white border p-2 mb-5" onChange="irancitylist(this.value);">
+                    <option value="0">لطفا استان را انتخاب نمایید</option>
+                    <option value="تهران">تهران</option>
+                    <option value="گیلان">گیلان</option>
+                    <option value="آذربایجان شرقی">آذربایجان شرقی</option>
+                    <option value="خوزستان">خوزستان</option>
+                    <option value="فارس">فارس</option>
+                    <option value="اصفهان">اصفهان</option>
+                    <option value="خراسان رضوی">خراسان رضوی</option>
+                    <option value="قزوین">قزوین</option>
+                    <option value="سمنان">سمنان</option>
+                    <option value="قم">قم</option>
+                    <option value="مرکزی">مرکزی</option>
+                    <option value="زنجان">زنجان</option>
+                    <option value="مازندران">مازندران</option>
+                    <option value="گلستان">گلستان</option>
+                    <option value="اردبیل">اردبیل</option>
+                    <option value="آذربایجان غربی">آذربایجان غربی</option>
+                    <option value="همدان">همدان</option>
+                    <option value="کردستان">کردستان</option>
+                    <option value="کرمانشاه">کرمانشاه</option>
+                    <option value="لرستان">لرستان</option>
+                    <option value="بوشهر">بوشهر</option>
+                    <option value="کرمان">کرمان</option>
+                    <option value="هرمزگان">هرمزگان</option>
+                    <option value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+                    <option value="یزد">یزد</option>
+                    <option value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+                    <option value="ایلام">ایلام</option>
+                    <option value="کهگلویه و بویراحمد">کهگلویه و بویراحمد</option>
+                    <option value="خراسان شمالی">خراسان شمالی</option>
+                    <option value="خراسان جنوبی">خراسان جنوبی</option>
+                    <option value="البرز">البرز</option>
+                </select>
+                    <span asp-validation-for="Input.ostan" class="text-red-500  mb-5"></span>
+
+            </div>
+                <div class="w-5/6">
+                <label for="city">* شهر :</label>
+                <select asp-for="Input.city" class="w-full bg-white border p-2  mb-5"  id="city">
+                    <option value="">لطفا استان را انتخاب نمایید</option>
+                </select>
+                    <span asp-validation-for="Input.city" class="text-red-500  mb-5"></span>
+
+            </div>
+                <div class="w-5/6">
+                    
+                    <label for="">آدرس پستی</label>
+                    <textarea asp-for="Input.Adress" class="border p-2 mb-5 focus:outline-none focus:border-gray-500 w-full resize-none" ></textarea>
+                    <span asp-validation-for="Input.Adress" class="text-red-500  mb-5"></span>
+
+                </div>
+                <div class="w-5/6">
+                    
+                    <label >کد پستی</label>
+                    <input asp-for="Input.Postalcode" class="border p-2 mb-5 focus:outline-none focus:border-gray-500 w-full resize-none" type="number"/>
+                    <span asp-validation-for="Input.Postalcode" class="text-red-500  mb-5"></span>
+               
+                </div>
+                  <div class="w-5/6">
+
+                    <label for="">رمز عبور</label>
+                    <input asp-for="Input.Password" class="border p-2 mb-5 focus:outline-none focus:border-gray-500 w-full " type="password">
+                    <span asp-validation-for="Input.Password" class="text-red-500  mb-5"></span>
+               
+                </div>
+                <div class="w-5/6">
+
+                    <label for="">تکرار رمز عبور</label>
+                    <input asp-for="Input.ConfirmPassword" class="border p-2 focus:outline-none focus:border-gray-500 w-full " type="password" >
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-red-500  mb-5"></span>
+                </div>
+            <button id="registerSubmit" type="submit"class="border-2 border-red-500 text-red-500 p-2 w-5/6 mt-3 hover:bg-red-500 hover:text-white transition duration-100">ثبت نام</button>
+
+               
+            </div>
+        </form>
+    </main>
 </div>
 
 @section Scripts {

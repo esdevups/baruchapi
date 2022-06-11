@@ -34,7 +34,8 @@ namespace Servises
                     UserId = CurrentUserID,
                     CreateDate = DateTime.Now,
                     IsFinaly = false,
-                    Sum = 0
+                    Sum = 0,
+                    Code = ""
                 };
                 _ctx.Orders.Add(order);
                 await _ctx.SaveChangesAsync();

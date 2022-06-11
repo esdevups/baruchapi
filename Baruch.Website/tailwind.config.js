@@ -1,5 +1,5 @@
 module.exports = {
-    content: ["./Pages/**.cshtml", "./Pages/Shared/**.cshtml", "./Pages/cart/**.cshtml"],
+    content: ["./Pages/**.cshtml", "./Pages/Shared/**.cshtml", "./Pages/cart/**.cshtml","./Areas/Identity/Pages/Account/*.cshtml"],
   theme: {
     extend: {
       fontFamily: {
