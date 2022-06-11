@@ -2,8 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Models.ViewModels;
 using Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace API.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -42,7 +46,7 @@ namespace API.Controllers
         public IActionResult getbyid(string id)
         {
             
-            return new ObjectResult(_ctx.Users.Find(id));
+            return new ObjectResult(_ctx.Users.Include(u=>u.Orders).SingleOrDefault(u=>u.Id == id));
         }
     }
 }

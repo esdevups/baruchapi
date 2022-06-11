@@ -21,5 +21,7 @@ namespace Models
 
         public Product Product { get; set; }
         public AppUser User { get; set; }
+        public DateTime Date { get; set; }
+
     }
 }

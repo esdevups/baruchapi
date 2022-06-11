@@ -23,5 +23,6 @@ namespace Data.D
         public DbSet<Category> Category { get; set; }
         public DbSet<ArticleLabel> ArticleLabels { get; set; }
         public DbSet<ProductLabel> ProductLabel { get; set; }
+        public DbSet<UI> ui { get; set; }
     }
 }

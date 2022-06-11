@@ -21,5 +21,6 @@ namespace Models
 
         public Article Article{ get; set; }
         public AppUser User { get; set; }
+        public DateTime Date{ get; set; }
     }
 }

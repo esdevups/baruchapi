@@ -27,5 +27,7 @@ namespace Models
         public AppUser User { get; set; }
 
         public ICollection<OrderDetail> OrderDetails { get; set; }
+     
+
     }
 }

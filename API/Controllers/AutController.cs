@@ -8,7 +8,7 @@ using Models.ViewModels;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-
+using Models;
 namespace Mesfo.Controllers
 {
     [Route("api/[controller]")]
@@ -57,6 +57,18 @@ namespace Mesfo.Controllers
             else
                 return BadRequest("کاربری با این ایمیل یافت نشد");
 
+
+
+        }
+
+        [HttpPut("Edit")]
+        public async Task<IActionResult> Edit([FromBody]Admin admin)
+        {
+            _ctx.Admins.Attach(admin).State = EntityState.Modified;
+           await _ctx.SaveChangesAsync();
+
+            return Ok();
+           
 
 
         }

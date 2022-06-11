@@ -5,6 +5,7 @@ using Models;
 using Servises;
 namespace API.Controllers
 {
+    [Authorize(Roles ="admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -17,7 +18,7 @@ namespace API.Controllers
             _context = context;
             _cart = cart;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> Get()
         {
@@ -26,7 +27,7 @@ namespace API.Controllers
                 return NotFound();
             }
             
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders.Include(o => o.OrderDetails).ToListAsync();
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Order>>> Get(int id)
@@ -63,6 +64,16 @@ namespace API.Controllers
         public async Task<string> Asde(int Detailid,string type)
         {
          return await  _cart.IncreaseOrDecreaseThenumberOfProducts(Detailid, type, 1);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> delete(int id)
+        {
+            var order = _context.Orders.Include(o=>o.OrderDetails).SingleOrDefault(o=>o.OrderId == id);
+            _context.OrderDetails.RemoveRange(order.OrderDetails);
+            _context.Orders.RemoveRange(order);
+            _context.SaveChanges();
+            return true;
         }
     }
 }

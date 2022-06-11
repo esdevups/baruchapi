@@ -95,6 +95,7 @@ namespace BaruchApi.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
             }
+            product.CreateDate = DateTime.Now;
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 

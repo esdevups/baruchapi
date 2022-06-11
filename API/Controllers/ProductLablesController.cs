@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Models;
 namespace API.Controllers
 {
+    [Authorize(Roles = "admin")]
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductLablesController : ControllerBase
