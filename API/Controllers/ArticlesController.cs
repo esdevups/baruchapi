@@ -6,7 +6,6 @@ using Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 using Models;
 using Operations.FileOperation;
 
@@ -136,7 +135,7 @@ namespace BaruchApi.Controllers
             if (httpRequest.Form.Files.Count > 0)
             {
 
-              return Ok(await _file.UploadSingleFile(httpRequest.Form.Files[0]));
+              return Ok(new {imagename = await _file.UploadSingleFile(httpRequest.Form.Files[0]) });
                
             }
             else

@@ -2,4 +2,27 @@
 @model Baruch.Website.Pages.OnlinepaymentModel
 @{
 }
-<h1>@Model.issucsses</h1>
+@if(@Model.issucsses){
+   <div class="h-screen">
+
+    <h1 class="p-2 text-center mx-auto my-5 bg-green-200 rounded w-4/5">
+        سفارش شما با موفقیت ثبت گردید.
+    </h1>
+
+    <h1 class="p-2 text-center mx-auto my-5 bg-blue-200 rounded w-4/5">
+       شما به صورت خودکار به صفحه دیگری خواهید رفت.
+    </h1>
+   </div>
+    
+}else {
+    <div class="h-screen">
+
+    <h1 class="p-2 text-center mx-auto my-5 bg-red-200 rounded w-4/5">
+       ثبت سفارش شما با مشکل مواجه شد.
+    </h1>
+
+    <h1 class="p-2 text-center mx-auto my-5 bg-yellow-200 rounded w-4/5">
+      در صورتی که مبلغی از حساب شما کسر شده است حد اکثر تا هفتاد و دو ساعت دیگر برای شما واریز خواهد شد.
+    </h1>
+   </div>
+}

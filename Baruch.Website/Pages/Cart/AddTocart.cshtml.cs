@@ -19,11 +19,12 @@ namespace Mesfo.Pages
         
         public async Task<IActionResult> OnGet(int id)
         {
-          
+            
             var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
           await  _CartOperation.AddToCart(id, userid, 1);
 
             return RedirectToPage("/Cart/Index");
         }
+       
     }
 }

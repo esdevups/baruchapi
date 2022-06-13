@@ -25,6 +25,7 @@ namespace BaruchApi.Controllers
         }
 
         // GET: api/SubCategories
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SubCategory>>> GetsubCategories()
         {

@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models.ViewModels;
 using Servises;
 using System.Security.Claims;
-using ZarinpalSandbox;
 using Data.D;
+using Zarinpal;
+
 namespace Mesfo.Pages.Cart
 {
     public class IndexModel : PageModel
@@ -46,12 +47,12 @@ namespace Mesfo.Pages.Cart
             {
                 return NotFound();
             }
-            var payment = new Payment(order.sum);
+            var payment =  new Payment("8e76f8b5-e7d6-451e-8014-2d8fb024ba09", order.sum);
             var res = payment.PaymentRequest($"پرداخت فاکتور شماره {order.OrderId}",
-                "https://localhost:7183/Onlinepayment?id=" + order.OrderId, User.Identity.Name,_ctx.Users.Find(User.FindFirstValue(ClaimTypes.NameIdentifier)).PhoneNumber);
+                "https://baruch.ir/Onlinepayment?id=" + order.OrderId, User.Identity.Name,_ctx.Users.Find(User.FindFirstValue(ClaimTypes.NameIdentifier)).PhoneNumber);
             if (res.Result.Status == 100)
             {
-                return Redirect("https://sandbox.zarinpal.com/pg/StartPay/" + res.Result.Authority);
+                return Redirect("https://zarinpal.com/pg/StartPay/" + res.Result.Authority);
             }
             else
             {

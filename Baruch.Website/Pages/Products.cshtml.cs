@@ -74,7 +74,7 @@ namespace Mesfo.Pages
                 TotalItems = count,
                 UrlParam = param.ToString()
             };
-            PagingViewModel.products = PagingViewModel.products.OrderByDescending(u => u.CreateDate)
+            PagingViewModel.products = PagingViewModel.products
                 .Skip((pageId - 1) * SD.Pagingcuont)
                 .Take(SD.Pagingcuont).ToList();
             return Page();

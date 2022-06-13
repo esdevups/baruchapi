@@ -22,7 +22,7 @@ namespace BaruchApi.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         // GET: api/Categories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategory()

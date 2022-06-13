@@ -1,3 +1,24 @@
+let sliderImages = [];
+const slider = document.getElementById('index-slider');
+ async function fetchImages () {
+    const response = await fetch("https://localhost:7196/api/ui");
+    const data = await response.json();
+    console.log(data);
+    sliderImages = data;
+    console.log(sliderImages)
+
+    for (image of sliderImages) {
+        slider.innerHTML += `<div class="slide">
+            <img src="/Site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
+                 alt="" />
+        </div>`
+    }
+};
+
+fetchImages();
+
+
+
 // Select all slides
 const slides = document.querySelectorAll(".slide");
 

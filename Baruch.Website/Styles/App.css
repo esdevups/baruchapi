@@ -4,14 +4,11 @@
 
 
 @font-face {
-    font-family: "yekan";
-    src: url("../fonts/BYekan/BYekan+.ttf");
+    font-family: "sahel";
+    src: url("../fonts/sahel/Sahel-FD-WOL.ttf"), url("../fonts/sahel/Sahel-FD-WOL.eot"), url("../fonts/sahel/Sahel-FD-WOL.woff");
 }
 
-@font-face {
-    font-family: "yekanbold";
-    src: url("../fonts/BYekan/BYekan+\ Bold.ttf");
-}
+
 
 @font-face {
     font-family: "smooch";

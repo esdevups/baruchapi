@@ -1,0 +1,75 @@
+﻿@page
+@model Baruch.Website.Pages.BlogModel
+@{
+}
+<main>
+    <section class="flex flex-col">
+
+        <section class="flex justify-center my-10">
+            <h3 class="text-center text-2xl">مقالات فروشگاه باروخ</h3>
+        </section>
+
+        <section class="container flex flex-col overflow-visible justify-center">
+            <section class="p-5 flex justify-center sm:block">
+                <!-- sorting section -->
+                <form class="flex flex-col justify-center sm:justify-start sm:flex-row">
+                    <select onchange="this.form.submit() class="p-2"  name="Filter" id="Filter">
+
+                        <option selected value="Date">مرتب سازی بر اساس تاریخ</option>
+
+                    </select>
+                    <div class="flex justify-center">
+                        @if (Model.AsDs == "asc")
+                        {
+                            <div class="mx-1 my-0.5 sm:my-2">
+
+                                <input onchange="this.form.submit()" checked class="hidden" name="type" value="asc" id="descending" type="radio"><label id="descending-label" class="p-1 border-4 block w-20 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="descending"><i class="zmdi zmdi-sort-amount-desc"></i> نزولی</label>
+                            </div>
+                            <div class="mx-1 my-0.5 sm:my-2">
+                                <input onchange="this.form.submit()" class="hidden" name="type" id="ascending" type="radio"><label id="ascending-label" class="p-1 w-20 block border-4 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="ascending"><i class="zmdi zmdi-sort-amount-asc"></i> صعودی</label>
+
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="mx-1 my-0.5 sm:my-2">
+
+                                <input onchange="this.form.submit()" class="hidden" name="type" value="asc" id="descending" type="radio"><label id="descending-label" class="p-1 border-4 block w-20 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="descending"><i class="zmdi zmdi-sort-amount-desc"></i> نزولی</label>
+                            </div>
+                            <div class="mx-1 my-0.5 sm:my-2">
+                                <input checked onchange="this.form.submit()" class="hidden" name="type" id="ascending" type="radio"><label id="ascending-label" class="p-1 w-20 block border-4 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="ascending"><i class="zmdi zmdi-sort-amount-asc"></i> صعودی</label>
+
+                            </div>
+                        }
+
+                    </div>
+                </form>
+            </section>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4  justify-center xl:w-full">
+                @foreach (var item in Model.PagingViewModel.Articles)
+                {
+
+                    <div class="bg-white  border w-80 rounded-lg m-5">
+                        <a href="">  <img class="w-full h-52 rounded-t-lg" src="https://api.baruch.ir/images/@item.ImageName" alt=""></a>
+                        <a href="" class="text-lg block font-yekanbold px-2 mb-2 mt-2 text-gray-700">@item.Title</a>
+                        <p class=" h-16 mb-5 px-2 overflow-hidden text-lg text-gray-600 ">@Mesfo.Internal_Servises.Utilities.SD.GetFirstCharacters(item.Text,200)</p>
+                        <div class="px-2">
+                            <p class="text-gray-600 text-base"><i class="zmdi zmdi-calendar "></i> @Operations.Datetime.Persiandate.PersianDate(@item.CreateDate)</p>
+                        </div>
+
+
+                    </div>
+                }
+            </div>
+
+
+            <div page-model="@Model.PagingViewModel.paging"
+                 page-action="Blog"
+                 page-class="py-2 px-3 leading-tight text-red-500 bg-white border border-red-300 hover:bg-red-100 hover:text-gray-700"
+                 page-class-normal="py-2 px-3 leading-tight text-red-500 bg-white border border-red-300 hover:bg-red-100 hover:text-gray-700"
+                 page-class-selected="py-2 px-3 leading-tight text-gray-900 bg-red-300 border border-red-300 hover:bg-red-100 hover:text-gray-700"
+                 class="rounded-lg flex border-collapse">
+            </div>
+
+</main>

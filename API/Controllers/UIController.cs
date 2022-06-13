@@ -4,6 +4,9 @@ using Operations.FileOperation;
 
 namespace API.Controllers
 {
+    [Authorize(Roles = "admin")]
+    [Route("api/[controller]")]
+
     public class UIController : Controller
     {
         private readonly ApplicationDbContext _ctx;
@@ -14,12 +17,14 @@ namespace API.Controllers
             _ctx = ctx;
             _file = file;
         }
-        public IActionResult Get()
+        [AllowAnonymous]
+        [HttpGet()]
+        public async Task<IActionResult> Get()
         {
             return new ObjectResult(_ctx.ui.FirstOrDefault());
         }
-        [HttpPut]
-        public IActionResult put([FromBody] UI ui)
+        [HttpPut()]
+        public async Task<IActionResult> put([FromBody] UI ui)
         {
             _ctx.ui.Attach(ui).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
 

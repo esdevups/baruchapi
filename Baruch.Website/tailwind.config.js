@@ -3,9 +3,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        yekan: ["yekan", "sans-serif"],
-        yekanbold: ["yekanbold", "sans-serif"],
-        smooch: ["smooch", "serif"]
+           
+            smooch: ["smooch", "serif"],
+            sahel: "sahel"
         
       },
     },

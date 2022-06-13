@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Data.D;
-using ZarinpalSandbox;
 using Microsoft.EntityFrameworkCore;
+using Zarinpal;
+
 namespace Baruch.Website.Pages
 {
     public class OnlinepaymentModel : PageModel
@@ -23,7 +24,7 @@ namespace Baruch.Website.Pages
             {
                 string authority = HttpContext.Request.Query["Authority"].ToString();
                 var order = await _ctx.Orders.Include(o=>o.OrderDetails).ThenInclude(o=>o.Product).SingleOrDefaultAsync(i=>i.OrderId == id);
-                var payment = new Payment(order.Sum);
+                var payment = new Payment("8e76f8b5-e7d6-451e-8014-2d8fb024ba09", order.Sum);
                 var res = payment.Verification(authority).Result;
                 if (res.Status == 100)
                 {

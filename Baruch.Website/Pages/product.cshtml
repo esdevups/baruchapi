@@ -21,7 +21,7 @@
         <div class="grid grid-cols-4 w-5/6 mx-auto  md:w-3/4 md:mx-auto lg:w-2/4 px-2">
           
                  <img class="w-full col-span-4 lg:h-96 cursor-pointer album-img"
-                 src="/site/img/index.jpg"
+                 src="https://api.baruch.ir/images/@Model.product.ImageName"
                  alt="">
             
                @foreach (var image in Model.product.Images.Take(4))
@@ -44,21 +44,24 @@
             </div>
               @if(Model.product.Quantity !=0)
                 {
-            <div class="py-3 rounded-md border flex bg-green-100 my-3 items-center">
-                <img class="w-7 h-7 mx-1"
+                    <div class="py-3 rounded-md border flex bg-green-100 my-3 items-center">
+                    <img class="w-7 h-7 mx-1"
                      src="/site/img/icons8-warehouse-80.png"
                      alt="">
-              
-                <p class="text-lg">موجود در انبار باروخ</p>
-                    
-            </div>
-                }
 
-            <div class="text-left text-lg text-green-900">
+                    <p class="text-lg">موجود در انبار باروخ</p>
+
+                </div>
+                      <div class="text-left text-lg text-green-900">
                
                 <span class="text-xl">@Model.product.Price.ToString("#,0")</span>
                 <span>ریال</span>
             </div>
+                
+            }
+        
+
+           
                @if(Model.product.Quantity !=0)
                 {
             <div class="mt-2">
@@ -247,3 +250,7 @@
     </div>
     <div id="album-backdrop" class="w-full h-full absolute bg-opacity-20 bg-black"></div>
 </div>
+@section Scripts{
+<script src="/Site/js/commentModal.js"></script>
+    <script src="/Site/js/album.js"></script>
+}

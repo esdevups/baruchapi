@@ -1,37 +1,17 @@
 ﻿@page
 @model Baruch.Pages.IndexModel
+
 @{
 
+    
 }
 
 <!-- hero section -->
 <section class="hero mx-auto overflow-hidden">
 
-    <div class="slider">
+    <div id="index-slider" class="slider">
 
-        <!-- slide 1 -->
-        <div class="slide">
-            <img src="/Site/img/ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"
-                 alt="" />
-        </div>
-
-        <!-- slide 2 -->
-        <div class="slide">
-            <img src="/Site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
-                 alt="" />
-        </div>
-
-        <!-- slide 3 -->
-        <div class="slide">
-            <img src="/Site/img/ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"
-                 alt="" />
-        </div>
-
-        <!-- slide 4 -->
-        <div class="slide">
-            <img src="/Site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
-                 alt="" />
-        </div>
+        
 
         <!-- Control buttons -->
         <button class="btn btn-next bg-black text-white"><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i></button>
@@ -41,6 +21,120 @@
 
 
 </section>
+<section class="flex flex-col">
+    <div class="container relative mx-auto flex justify-between p-7 border-b ">
+        <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+        <a href="">
+            <h3 class="text-2xl text-gray-500">باروخ کالا های برتر</h3>
+        </a>
+
+        <a class="text-md text-blue-500"
+           href=""> مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
+    </div>
+
+    </div>
+
+    <div class="slide-container  container">
+        <div class="slide-right p-5 cursor-pointer"
+             data-carousel="c1">
+            <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
+        
+        </div>
+        <section class="container-1400 min-w-64 scroll-smooth bg-yellow-500 rounded" 
+                  id="c1">
+            @foreach  (var i in Model.Products)
+            {
+                @if (i.Quantity != 0)
+                {
+                     <div  class="thumbnail">
+                <a asp-page="product" asp-route-id="@i.Id"  class="thumbnail">
+                  
+                    <img class="w-60 h-52 cursor-pointer"
+               
+                     src="https://api.baruch.ir/images/@i.ImageName"
+                     alt="">
+                     </a>
+                    <div class="product-details">
+
+                        <a asp-page="product" asp-route-id="@i.Id">
+                            <h2 class="text-gray-700">@i.Title</h2>
+                        </a>
+                        <p> @i.Price.ToString("#,0")</p>
+                        <a asp-page="/Cart/AddTocart" asp-route-id="@i.Id"
+                       class="bg-red-500 text-white">افزودن به سبد خرید</a>
+                    </div>
+                </div>
+                }
+               
+            }
+
+
+        </section>
+        <div class="slide-left p-5 cursor-pointer"
+             data-carousel="c1">
+            <i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i>
+        
+        </div>
+    </div>
+
+</section>
+
+
+<section class="my-5 py-5 border-y">
+    <div class="w-11/12 lg:w-4/6 mx-auto grid grid-cols-4 gap-1 grid-rows-2 justify-center">
+
+        <div class=" col-span-2 row-span-2 relative">
+            <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/1221.jpg"  />
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[0].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+
+                     <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[0].Title</h3>
+            </a>
+
+        </div>
+
+
+        <div class=" relative">
+            <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/121753958.jpg"  />
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[1].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+
+                     <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[1].Title</h3>
+            </a>
+
+        </div>
+
+        <div class=" relative">
+            <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/fdb25b94c8d7bccf349f4d021be09533.jpg"  />
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[2].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+
+                     <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[2].Title</h3>
+            </a>
+
+        </div>
+
+        <div class="col-start-3 relative">
+            <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/121231473.jpg"  />
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[3].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 rounded-lg absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+
+                     <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[3].Title</h3>
+            </a>
+
+        </div>
+
+        <div class="col-start-4 relative">
+            <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/3037027.png"  />
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[4].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+
+                    <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[4].Title</h3>
+            </a>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
 <section class="flex flex-col">
     <div class="container relative mx-auto flex justify-between p-7 border-b ">
         <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
@@ -56,12 +150,12 @@
 
     <div class="slide-container  container">
         <div class="slide-right p-5 cursor-pointer"
-             data-carousel="c1">
+             data-carousel="c2">
             <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
         
         </div>
-        <section class="container-1400 min-w-64 scroll-smooth"
-                  id="c1">
+        <section class="container-1400 min-w-64 scroll-smooth  bg-blue-500"
+                  id="c2">
             @foreach  (var i in Model.Products)
             {
                 @if (i.Quantity != 0)
@@ -71,12 +165,12 @@
                   
                     <img class="w-60 h-52 cursor-pointer"
                
-                     src="./Site/img/@i.ImageName"
+                     src="https://api.baruch.ir/images/@i.ImageName"
                      alt="">
                      </a>
                     <div class="product-details">
 
-                        <a href="">
+                        <a asp-page="product" asp-route-id="@i.Id">
                             <h2 class="text-gray-700">@i.Title</h2>
                         </a>
                         <p> @i.Price.ToString("#,0")</p>
@@ -91,241 +185,6 @@
 
         </section>
         <div class="slide-left p-5 cursor-pointer"
-             data-carousel="c1">>
-            <i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i>
-        
-        </div>
-    </div>
-
-</section>
-
-
-<section class="my-5 py-5 border-y">
-    <div class="w-11/12 lg:w-4/6 mx-auto grid grid-cols-4 gap-1 grid-rows-2 justify-center">
-
-        <div class=" col-span-2 row-span-2 relative">
-            <img class="object-cover w-full h-full" src="/Site/img/mess.jpg"  />
-            <a href="" class="bg-black transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
-
-                    <h3 class="text-xs md:text-xl text-white">لوازم دکور</h3>
-            </a>
-
-        </div>
-
-
-        <div class=" relative">
-            <img class="object-cover w-full h-full" src="/Site/img/\ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"  />
-            <a href="" class="bg-black transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
-
-                    <h3 class="text-xs md:text-xl text-white">لوازم دکور</h3>
-            </a>
-
-        </div>
-
-        <div class=" relative">
-            <img class="object-cover w-full h-full" src="/Site/img/\ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"  />
-            <a href="" class="bg-black transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
-
-                    <h3 class="text-xs md:text-xl text-white">لوازم دکور</h3>
-            </a>
-
-        </div>
-
-        <div class="col-start-3 relative">
-            <img class="object-cover w-full h-full" src="/Site/img/\ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"  />
-            <a href="" class="bg-black transition duration-200 ease-in hover:bg-opacity-0 rounded-lg absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
-
-                    <h3 class="text-xs md:text-xl text-white">لوازم دکور</h3>
-            </a>
-
-        </div>
-
-        <div class="col-start-4 relative">
-            <img class="object-cover w-full h-full" src="/Site/img/\ilze-lucero-IjNn_IGwyWE-unsplash_2(1).jpg"  />
-            <a href="" class="bg-black transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
-
-                    <h3 class="text-xs md:text-xl text-white">لوازم دکور</h3>
-            </a>
-
-        </div>
-    </div>
-
-</section>
-
-
-
-
-<section class="flex flex-col">
-    <div class="container relative mx-auto flex justify-between p-7 border-b ">
-        <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
-        <a href="">
-            <h3 class="text-2xl text-gray-500">کالا های برتر</h3>
-        </a>
-
-        <a class="text-md text-blue-500"
-           href=""> مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
-    </div>
-
-    </div>
-
-    <div class="slide-container container">
-        <div class="slide-right p-5 cursor-pointer"
-             data-carousel="c2">
-            <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
-        
-        </div>
-        <section class="scroll-smooth container-1400 min-w-64"
-                  id="c2">
-
-            <div class="thumbnail">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img class="w-60 h-52"
-                     src="/Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">>
-
-
-                        افزودنافزودن بهبه سبدسبد خرید
-                    </a>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img class="w-60 h-52"
-                     src="/Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail border-t-0">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail border-t-0">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail border-t-0">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail border-t-0">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail border-t-0">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-            <div class="thumbnail border-t-0">
-                <img class="w-60 h-52"
-                     src="./Site/img/index.jpg"
-                     alt="">
-                <div class="product-details">
-                    <a href="">
-                        <h2 class="text-gray-700">قابلمه مسی یازده لیتری</h2>
-                    </a>
-                    <p> <span>300,000</span> 600,000ریال</p>
-                    <a class="bg-red-500 text-white"
-                       href="#">افزودن به سبد خرید</a>
-                </div>
-            </div>
-        </section>
-        <div class="slide-left p-5 cursor-pointer"
              data-carousel="c2">
             <i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i>
         
@@ -333,12 +192,13 @@
     </div>
 
 </section>
+
 
 <section class="flex flex-col">
     <div class="container relative mx-auto flex justify-between p-7 border-b">
         <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
         <a href="">
-            <h3 class="text-2xl text-gray-500">مقالات مسفو </h3>
+            <h3 class="text-2xl text-gray-500">مقالات باروخ </h3>
         </a>
 
         <a class="text-md text-blue-500"
@@ -347,78 +207,25 @@
 
     
     <section class="container grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-5 text-gray-700 justify-center">
-        <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
-            <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
-            <a href="">
+        @foreach (var item in Model.Articles)
+        {
+               <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
+                    <a asp-page="article" asp-route-id="@item.Id"  class="thumbnail">
+            <img class="w-full h-52 rounded-t-lg" src="https://api.baruch.ir/images/@item.ImageName" alt="">
+            </a>
+             <a asp-page="article" asp-route-id="@item.Id"  class="thumbnail">
 
-                <h3 class="mt-1 px-2 mb-5">1فواید استفاده از ظروف مسی </h3>
+                <h3 class="mt-1 px-2 mb-5">@item.Title </h3>
             </a>
             <div class="flex justify-between px-2 py-2">
 
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
-                <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
+                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> باروخ</p>
+                <p class="text-xs">@Operations.Datetime.Persiandate.PersianDate(@item.CreateDate)<i class="zmdi zmdi-calendar"></i></p>
             </div>
         </div>
-        <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
-            <img class="w-full h-52  rounded-t-lg" src="/Site/img/mess.jpg" alt="">
-            <a href="">
-
-                <h3 class="mt-1 px-2 mb-5">2فواید استفاده از ظروف مسی </h3>
-            </a>
-            <div class="flex justify-between px-2 py-2">
-
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
-                <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
-            </div>
-        </div>
-        <div class="bg-white lg:mx-2 mx-5 my-5 w-72 md:w-auto rounded-2xl shadow-lg">
-            <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
-            <a href="">
-
-                <h3 class="mt-1 px-2 mb-5">3فواید استفاده از ظروف مسی </h3>
-            </a>
-            <div class="flex justify-between px-2 py-2">
-
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
-                <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
-            </div>
-        </div>
-        <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
-            <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
-            <a href="">
-
-                <h3 class="mt-1 px-2 mb-5">4فواید استفاده از ظروف مسی </h3>
-            </a>
-            <div class="flex justify-between px-2 py-2">
-
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
-                <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
-            </div>
-        </div>
-        <div class="bg-white lg:mx-2 mx-5 my-5 w-72 md:w-auto rounded-2xl shadow-lg">
-            <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
-            <a href="">
-
-                <h3 class="mt-1 px-2 mb-5">5فواید استفاده از ظروف مسی </h3>
-            </a>
-            <div class="flex justify-between px-2 py-2">
-
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
-                <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
-            </div>
-        </div>
-        <div class="bg-white lg:mx-2 mx-5 my-5 w-72 md:w-auto rounded-2xl shadow-lg">
-            <img class="w-full h-52 rounded-t-lg" src="/Site/img/mess.jpg" alt="">
-            <a href="">
-
-                <h3 class="mt-1 px-2 mb-5">6فواید استفاده از ظروف مسی </h3>
-            </a>
-            <div class="flex justify-between px-2 py-2">
-
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> محمدحسین خالداری</p>
-                <p class="text-xs">1400/01/14<i class="zmdi zmdi-calendar"></i></p>
-            </div>
-        </div>
+        }
+     
+       
     </section>
 
 
