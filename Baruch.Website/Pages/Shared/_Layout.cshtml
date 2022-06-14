@@ -32,7 +32,9 @@
             <p class="text-xs">ارسال به سراسر کشور</p>
         </div>
     </div>
-    <header class="top-0 lg:h-24 z-20 border-b sticky border-red-400 bg-white px-3" id="main-header">
+    <section class="sticky top-0  z-20 w-screen flex flex-col">
+
+    <header class="top-0 w-screen lg:h-24 border-b border-red-400 bg-white px-3" id="main-header">
 
         <div class="container-1400 mx-auto">
 
@@ -115,7 +117,7 @@
             </div>
         </div>
     </header>
-    <nav class="bg-red-500 relative">
+    <nav class="bg-red-500 relative w-screen">
         <div class="container-1400 mx-auto px-3 h-16 flex justify-between items-center">
             <div id="burger-menu-btn" class="text-white cursor-pointer lg:cursor-default lg:text-gray-200 flex">
                 <i class="zmdi zmdi-view-list-alt text-white lg:text-gray-200 zmdi-hc-3x"></i>
@@ -131,7 +133,9 @@
             </div>
         </div>
     </nav>
-    @RenderBody();
+    </section>
+    
+    @RenderBody()
     
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto flex mb-10 flex-col lg:flex-row justify-center">
@@ -140,33 +144,12 @@
                 <h3 class="text-xl border-b-2 py-2 border-b-red-600">
                     ارتباط با باروخ
                 </h3>
-                <ul>
+                <ul id="footer-list">
                  
-                    <li class="py-1">
-                        آدرس: کوهبنان خیابان شهدا
-                    </li>
-                    <li class="py-1">
-                        تلفن: 0915555555
-                    </li>
+                   
                 </ul>
             </div>
-            <div class="lg:w-1/2 mx-4">
-
-                <h3 class="text-xl border-b-2 py-2 border-b-red-600">
-                    ارتباط با مسفو
-                </h3>
-                <ul>
-                    <li class="py-1">
-                        فروشگاه ظروف مسی باروخ
-                    </li>
-                    <li class="py-1">
-                        آدرس: کوهبنان خیابان شهدا
-                    </li>
-                    <li class="py-1">
-                        تلفن: 0915555555
-                    </li>
-                </ul>
-            </div>
+            
 
         </div>
         <div class="container mx-auto border-t border-gray-400 text-lg py-4">
@@ -371,9 +354,9 @@
 
 <script src="/Site/js/category-popover-handler.js"></script>
     
-    <script src="/Site/js/fetchCategories.js">
+    <script src="/Site/js/fetchCategories.js"></script>
 
-@RenderSection("scripts", required:false);
+@RenderSection("scripts", required:false)
 
 <script src="/Site/js/slider.js"></script>
 <script src="/Site/js/cities.js"></script>
