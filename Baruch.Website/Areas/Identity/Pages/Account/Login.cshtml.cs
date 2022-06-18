@@ -65,7 +65,7 @@ namespace Mesfo.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage ="ایمیل را وارد کنید")]
             [EmailAddress]
             public string Email { get; set; }
 
@@ -73,7 +73,8 @@ namespace Mesfo.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "رمز عبور را وارد کنید")]
+
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
@@ -129,7 +130,7 @@ namespace Mesfo.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است");
                     return Page();
                 }
             }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.ViewModels;
 using Data;
 
 namespace BaruchApi.Controllers
@@ -55,14 +56,25 @@ namespace BaruchApi.Controllers
         // PUT: api/Categories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutCategory(int id, CategoryViewModle category)
         {
             if (id != category.Id)
             {
                 return BadRequest();
             }
+               var category1 = new Category()
+               {
+                 
+                   Title = category.Title,
+                   Id = category.Id
+                  
+               };
 
-            _context.Entry(category).State = EntityState.Modified;
+        
+
+
+
+            _context.Entry(category1).State = EntityState.Modified;
 
             try
             {
@@ -86,16 +98,23 @@ namespace BaruchApi.Controllers
         // POST: api/Categories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> PostCategory(CategoryViewModle category)
         {
           if (_context.Category == null)
           {
               return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
           }
-            _context.Category.Add(category);
+            var category1 = new Category()
+            {
+
+                Title = category.Title,
+          
+
+            };
+            _context.Category.Add(category1);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return new ObjectResult(category1);
         }
 
         // DELETE: api/Categories/5

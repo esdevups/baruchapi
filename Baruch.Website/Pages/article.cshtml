@@ -19,7 +19,7 @@
             </div>
             <div class="text-lg text-justify">
 
-              @article.Text
+              @Html.Raw(article.Text)
             
                 
             </main>
@@ -57,5 +57,24 @@
 
                 @section Scripts{
 <script src="/Site/js/commentModal.js"></script>
-    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+    Toastify({
+  text: "با تشکر از نظر شما",
+  duration: 3000,
+
+  newWindow: true,
+  
+  gravity: "top", // `top` or `bottom`
+  position: "right", // `left`, `center` or `right`
+  stopOnFocus: false, // Prevents dismissing of toast on hover
+  style: {
+    background: "white",
+    color: 'green',
+    borderBottom: '2px solid green',
+    padding: '20px'
+  },
+  onClick: function(){} // Callback after click
+}).showToast();
+</script>
 }

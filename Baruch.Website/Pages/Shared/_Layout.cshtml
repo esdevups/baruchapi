@@ -18,25 +18,20 @@
     <link rel="stylesheet"
           href="/Site/css/product-slider.css">
 
-
-
+          <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+          <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
 
 </head>
 
 <body class="bg-gray-50
  font-sahel
  ">
-    <div class="pt-1 border border-gray-300">
+
+    <section class="sticky overflow-y-visible z-50 top-0 flex flex-col">
+
+    <header class="top-0 w-full lg:h-24 border-b overflow-y-visible border-red-400 bg-white px-3" id="main-header">
+
         <div class="container mx-auto">
-
-            <p class="text-xs">ارسال به سراسر کشور</p>
-        </div>
-    </div>
-    <section class="sticky top-0  z-20 w-screen flex flex-col">
-
-    <header class="top-0 w-screen lg:h-24 border-b border-red-400 bg-white px-3" id="main-header">
-
-        <div class="container-1400 mx-auto">
 
             <div class="flex justify-between">
                 <div id="search-container" class="flex">
@@ -104,20 +99,21 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#"
-                       class="flex md:ml-5 relative hover:-translate-y-1 transition duration-100 ease-in hover:shadow-lg p-1 rounded-2xl flex-col lg:flex-row justify-center">
+                    <div data-drop="profile-drop" href="#"
+                       class="flex drop-button z-50 md:ml-5 relative hover:-translate-y-1 transition duration-100 ease-in hover:shadow-lg p-1 rounded-2xl flex-col lg:flex-row justify-center">
 
                         <img class=" w-10 h-10 lg:w-auto lg:h-auto"
                              src="/Site/img/icons8-user-64.png"
                              alt="">
                         <span class="text-xs mt-2 font-sahel hidden lg:inline">محمدحسین خالداری</span>
 
-                    </a>
+                    </div>
+                
                 </div>
             </div>
         </div>
     </header>
-    <nav class="bg-red-500 relative w-screen">
+    <nav id="nav" class="bg-red-500 w-full relative">
         <div class="container-1400 mx-auto px-3 h-16 flex justify-between items-center">
             <div id="burger-menu-btn" class="text-white cursor-pointer lg:cursor-default lg:text-gray-200 flex">
                 <i class="zmdi zmdi-view-list-alt text-white lg:text-gray-200 zmdi-hc-3x"></i>
@@ -133,36 +129,91 @@
             </div>
         </div>
     </nav>
+      <div id="profile-drop" class="fixed hidden border shadow-lg z-40 w-52 top-20 left-0 md:left-32 h-48 bg-white">
+                        <div class="flex flex-col w-full">
+                            <ul>
+                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs" href="">داشبورد</a></li>
+                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs zmdi-" href="">تغییر مشخصات کاربری</a></li>
+                                <li class="p-1  my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs" href="">تغییر رمز عبور</a></li>
+                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs" href="">خروج از حساب کاربری</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="w-full h-full fixed hidden top-0 left-0 z-30" data-drop="profile-drop" id="profile-backdrop"></div>
     </section>
-    
+      
     @RenderBody()
     
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto flex mb-10 flex-col lg:flex-row justify-center">
-            <div class="lg:w-1/2 mx-4">
-
-                <h3 class="text-xl border-b-2 py-2 border-b-red-600">
-                    ارتباط با باروخ
-                </h3>
-                <ul id="footer-list">
-                 
-                   
-                </ul>
+    <footer class="rounded-t-r-full border-t text-gray-500 mt-5">
+        <div class="px-5">
+            <div>
+                 <a href="#"
+                       id="header-logo"
+                       class="lg:py-4 block mb-10">
+                        <a href="/" class="mt-2">
+                            <span class="text-red-500 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
+                            <h1 class="text-smooch lg:text-sm text-xs -mt-2 text-red-600">گالری مس باروخ</h1>
+                        </a>
             </div>
-            
-
+            <div class="flex max-w-screen-xl text-center flex-wrap justify-center mx-auto">
+                <div class="mx-20 w-36 mb-10 flex flex-col items-center">
+                    <img src="~/Site/img/icons8-fast-delivery-64.png" />
+                    <h6>ارسال فوری</h6>
+                </div>
+                <div class="mx-20 mb-10 w-36 text-center flex items-center flex-col">
+                    <img src="~/Site/img/icons8-guarantee-64 (1).png" />
+                    <h6>تضمین کیفیت و اصالت کالا</h6>
+                </div>
+                <div class="mx-20 mb-10 w-36  text-center flex  items-center flex-col">
+                    <img src="~/Site/img/icons8-support-64.png" />
+                    <h6>پاسخگویی 24 ساعته</h6>
+                </div>
+                <div class="mx-20 mb-10 w-36 text-center flex items-center flex-col">
+                    <img src="~/Site/img/icons8-cost-64 (1).png" />
+                    <h6>قیمت مناسب</h6>
+                </div>
+            </div>
+            <div class="flex justify-center flex-col sm:flex-row max-w-screen-xl flex-wrap mx-auto mt-12">
+                 
+                <div class="text-center mt-12 sm:mx-24">
+            <h3 class="pb-3">نقشه سایت</h3>
+           <ul>
+               <li class="pb-2 text-nowrap"><a>دسته بندی ها</a></li>
+               <li class="pb-2 text-nowrap"><a>بلاگ</a></li>
+               <li class="pb-2 text-nowrap"><a>محصولات</a></li>
+               <li class="pb-2 text-nowrap"><a>ثبت نام</a></li>
+               
+           </ul>
         </div>
-        <div class="container mx-auto border-t border-gray-400 text-lg py-4">
-            <h3>تمامی حقوق این وبسایت متعلق به گالری مس باروخ می باشد.</h3>
+        <div class="text-center mt-12 sm:mx-24">
+            <h3 class="pb-3">ارتباط با باروخ</h3>
+           <ul id="footer-list">
+               <li class="pb-2 text-nowrap">آدرس: کرمان کوهبنان خیابان شهدا</li>
+               <li class="pb-2 text-nowrap">تلفن: 09137555555</li>
+               <li class="pb-2 text-nowrap">ایمیل: email@email.com</li>
+           </ul>
         </div>
-
+        
+        <div class="text-center mt-12 sm:mx-24"
+            <h3 class="pb-3">خدمات باروخ</h3>
+           <ul>
+               <li class="pb-2 text-nowrap">تولید و توضیع ظروف مسی</li>
+               <li class="pb-2 text-nowrap">فیروزه کوبی</li>
+               <li class="pb-2 text-nowrap">تولید لوازم دکور و آشپزخانه</li>
+           </ul>
+        </div>
+            </div>
+        
+        <div></div>
+        </div>
+        
     </footer>
 
     <section>
         <!-- portal -->
 
         <div id="cat-modal"
-             class="w-3/4 hidden  absolute top-44 left-24 h-96 border border-1 bg-white z-40 flex-col overflow-hidden"
+             class="w-3/4 hidden  fixed top-40 left-24 h-96 border border-1 bg-white z-40 flex-col overflow-hidden"
              id="category-modal">
             <h3 class="font-sahel m-2 pb-1 border-b border-red-100">محصولات فروشگاه باروخ</h3>
             <div class="flex overflow-hidden relative">
@@ -176,7 +227,7 @@
                 </div>
             </div>
         </div>
-        <div data-target="category-modal"
+        <div data-target="cat-modal"
              class="popover-backdrop hidden bg-black opacity-10"></div>
 
         <!-- Burger menu -->
@@ -195,147 +246,9 @@
                 <button id="burger-close" class="mx-2 absolute left-7 top-5"><i class="zmdi zmdi-close zmdi-hc-2x"></i></button>
             </div>
             <h3 class="mb-0 pt-5 pb-4 px-3 text-lg font-sahel">دسته بندی محصولات</h3>
-            <ul class="flex justify-start w-full flex-col relative z-40 font-sahel text-gray-600">
-                <li class="mx-3 py-3 border-b transition duration-100">
-                    <a class="relative block hover:text-black"
-                       href="">
-                        ظروف آشپزخانه
-                        <i class="zmdi zmdi-chevron-down"></i>
-                        <div data-target="c1" class="mobile-cat-btn  rounded-md bg-opacity-5  absolute w-full h-full top-0 left-0"></div>
-                    </a>
-                    <ul id="c1" class="sublist h-0 scale-0">
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="mx-3 py-3 border-b transition duration-100">
-                    <a class="relative block hover:text-black"
-                       href="">
-                        لوازم دکور
-                        <i class="zmdi zmdi-chevron-down"></i>
-                        <div data-target="c2" class="mobile-cat-btn  rounded-md bg-opacity-5  absolute w-full h-full top-0 left-0"></div>
-                    </a>
-                    <ul id="c2" class="sublist h-0 scale-0">
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="mx-3 py-3 border-b transition duration-100">
-                    <a class="relative block hover:text-black"
-                       href="">
-                        زیورآلات
-                        <i class="zmdi zmdi-chevron-down"></i>
-                        <div data-target="c3" class="mobile-cat-btn  rounded-md bg-opacity-5  absolute w-full h-full top-0 left-0"></div>
-                    </a>
-                    <ul id="c3" class="sublist h-0 scale-0">
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="mx-3 py-3 border-b transition duration-100">
-                    <a class="relative block hover:text-black"
-                       href="">
-                        لیوان و استکان
-                        <i class="zmdi zmdi-chevron-down"></i>
-                        <div data-target="c4" class="mobile-cat-btn rounded-md bg-opacity-5 absolute w-full h-full top-0 left-0"></div>
-                    </a>
-                    <ul id="c4" class="sublist h-0 scale-0">
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                        <li class="py-2 pr-3 border-b">
-                            <a href="">
-                                قابلمه
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+            <ul id="mobile-list" class="flex justify-start w-full flex-col relative z-40 font-sahel text-gray-600">
+                
+               
             </ul>
         </div>
         <div class="burger-backdrop hidden"></div>
@@ -352,11 +265,10 @@
 
 
 
-<script src="/Site/js/category-popover-handler.js"></script>
+
     
     <script src="/Site/js/fetchCategories.js"></script>
 
-@RenderSection("scripts", required:false)
 
 <script src="/Site/js/slider.js"></script>
 <script src="/Site/js/cities.js"></script>
@@ -365,7 +277,7 @@
 <script src="/Site/js/main-header.js"></script>
 <script src="/Site/js/search-form.js"></script>
 <script src="/Site/js/burger-menu.js"></script>
-
-
+<script src="/Site/js/dropdown.js"></script>
+@RenderSection("scripts", required:false)
 
 </html>

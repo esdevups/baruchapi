@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.ViewModels;
 using Operations.FileOperation;
 
 namespace BaruchApi.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
 
     [Route("api/[controller]")]
     [ApiController]
@@ -57,14 +58,23 @@ namespace BaruchApi.Controllers
         // PUT: api/Articles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArticle(int id, Article article)
+        public async Task<IActionResult> PutArticle(int id, ArticleViewModel article)
         {
             if (id != article.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(article).State = EntityState.Modified;
+            //Criate article vaiable article1 to store the article
+            var article1 = new Article()
+            {
+                Id = article.Id,
+                Title = article.Title,
+                ImageName = article.ImageName,
+                CreateDate = article.CreateDate,
+                Text = article.Text,
+               
+            };
+            _context.Entry(article1).State = EntityState.Modified;
 
             try
             {
@@ -88,17 +98,25 @@ namespace BaruchApi.Controllers
         // POST: api/Articles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Article>> PostArticle(Article article)
+        public async Task<ActionResult<Article>> PostArticle(ArticleViewModel article)
         {
           if (_context.Articles == null)
           {
               return Problem("Entity set 'ApplicationDbContext.Articles'  is null.");
           }
-            article.CreateDate = DateTime.Now;
-            _context.Articles.Add(article);
+            var article1 = new Article()
+            {
+                Id = article.Id,
+                Title = article.Title,
+                ImageName = article.ImageName,
+                CreateDate = DateTime.Now,
+                Text = article.Text,
+
+            };
+            _context.Articles.Add(article1);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArticle", new { id = article.Id }, article);
+            return new ObjectResult(article1);
         }
 
         // DELETE: api/Articles/5

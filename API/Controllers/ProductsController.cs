@@ -6,13 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.ViewModels;
 using Data;
 using Microsoft.AspNetCore.Authorization;
 using Operations.FileOperation;
 
 namespace BaruchApi.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -58,13 +59,23 @@ namespace BaruchApi.Controllers
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, ProductViewModle productv)
         {
-            if (id != product.Id)
+            if (id != productv.Id)
             {
                 return BadRequest();
             }
-
+            var product = new Product()
+            {
+                Title = productv.Title,
+                CreateDate = productv.CreateDate,
+                Id = productv.Id,
+                ImageName = productv.ImageName,
+                Price = productv.Price,
+                Quantity = productv.Quantity,
+                SubCategoryId = productv.SubCategoryId ,
+                Text = productv.Text,
+            };
             _context.Entry(product).State = EntityState.Modified;
 
             try
@@ -89,17 +100,27 @@ namespace BaruchApi.Controllers
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product>> PostProduct(ProductViewModle productv)
         {
             if (_context.Products == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Products'  is null.");
             }
-            product.CreateDate = DateTime.Now;
+            var product = new Product()
+            {
+                Title = productv.Title,
+                CreateDate = DateTime.Now,
+                Id = productv.Id,
+                ImageName = productv.ImageName,
+                Price = productv.Price,
+                Quantity = productv.Quantity,
+                SubCategoryId = productv.SubCategoryId,
+                Text = productv.Text,
+            };
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return new ObjectResult(product);
         }
 
         // DELETE: api/Products/5
@@ -110,7 +131,24 @@ namespace BaruchApi.Controllers
             {
                 return NotFound();
             }
-            var product = await _context.Products.Include(c => c.Comments).SingleOrDefaultAsync(i => i.Id == id);
+          
+            var product = await _context.Products.Include(c => c.Comments).Include(i=>i.Images).SingleOrDefaultAsync(i => i.Id == id);
+            try
+            {
+              await  _file.DeleteFile(product.ImageName);
+
+                foreach(var image in product.Images)
+                {
+                    await _file.DeleteFile(image.Name);
+                }
+                _context.Images.RemoveRange(product.Images);
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             if (product == null)
             {
                 return NotFound();

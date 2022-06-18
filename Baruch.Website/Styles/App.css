@@ -86,3 +86,15 @@
 .comment-modal {
     @apply fixed justify-center items-center top-0 left-0 w-full h-full z-30;
 }
+
+.bg-opacity-setter {
+    @apply bg-opacity-5;
+}
+
+.h-zero {
+    @apply h-0;
+}
+
+.scale-zero {
+    @apply scale-0;
+}

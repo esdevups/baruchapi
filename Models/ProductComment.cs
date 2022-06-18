@@ -11,7 +11,7 @@ namespace Models
     {
         [Key]
         public int Id { get; set; }
-        [Required, MaxLength(1000)]
+        [Required(ErrorMessage ="لطفا متن کامنت را وارد کنید"), MaxLength(1000)]
         public string Text { get; set; }
         [ForeignKey("Product")]
         public int Productid { get; set; }

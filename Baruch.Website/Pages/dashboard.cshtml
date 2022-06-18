@@ -1,0 +1,112 @@
+﻿@page
+@model Baruch.Website.Pages.dashbordModel
+@{
+}
+
+
+<section class="container mx-auto">
+    <section class="grid grid-cols-4 mt-5 gap-10">
+        <aside class="shadow-lg col-span-5 lg:col-span-1 mx-5 lg:mx-0 p-5 border rounded-lg lg:h-screen">
+            <div class="flex justify-center mb-7">
+                
+              <a href="#"
+                       id="header-logo"
+                       class="block">
+                        <a href="/" class="">
+                            <span class="text-red-500 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
+                            <h1 class="text-smooch lg:text-sm text-xs -mt-2 text-red-600">گالری مس باروخ</h1>
+                        </a>
+            </div>
+                
+                        <ul>
+                    <li class="text-sm text-blue-400 mb-5 hover:text-black"><i class="zmdi zmdi-dot-circle zmdi-hc-fw"></i><a href="">داشبورد</a></li>
+                    <li class="text-sm text-blue-400 mb-5 hover:text-black"><i class="zmdi zmdi-dot-circle zmdi-hc-fw"></i><a href="">ویرایش اطلاعات کاربری</a></li>
+                    <li class="text-sm text-blue-400 mb-5 hover:text-black"><i class="zmdi zmdi-dot-circle zmdi-hc-fw"></i><a href="">تغییر رمز عبور</a></li>
+                    
+                </ul>
+        </aside>
+        <main class="col-span-5 lg:col-span-3 shadow-lg p-5 mx-5 lg:mx-0 border lg:h-screen rounded-lg">
+            <form class="flex flex-wrap">
+                
+                <div class="w-full lg:w-2/5 mx-5 mb-5">
+                    <label class="text-gray-800">نام و نام خانوادگی</label>
+                <input class="focus:outline-none border w-full py-2 rounded focus:border-gray-800" type="text"/>
+                </div>
+                  <div class="w-full md:w-2/5 mx-5 mb-5">
+                    <label class="text-gray-800">ایمیل</label>
+                <input class="focus:outline-none border w-full py-2 rounded focus:border-gray-800" type="text"/>
+                </div>
+                
+                  
+                
+                  <div class="w-full md:w-2/5 mx-5 mb-5">
+                    <label class="text-gray-800">نام و نام خانوادگی</label>
+                <input class="focus:outline-none border w-full py-2 rounded focus:border-gray-800" type="text"/>
+                </div>
+
+                  <div class="w-full md:w-2/5 mx-5">
+                    
+                    <label class="text-gray-800" for="state"> استان :</label>
+                    <select  class="w-full bg-white border p-2 mb-5" onChange="irancitylist(this.value);">
+                    <option value="0">لطفا استان را انتخاب نمایید</option>
+                    <option value="تهران">تهران</option>
+                    <option value="گیلان">گیلان</option>
+                    <option value="آذربایجان شرقی">آذربایجان شرقی</option>
+                    <option value="خوزستان">خوزستان</option>
+                    <option value="فارس">فارس</option>
+                    <option value="اصفهان">اصفهان</option>
+                    <option value="خراسان رضوی">خراسان رضوی</option>
+                    <option value="قزوین">قزوین</option>
+                    <option value="سمنان">سمنان</option>
+                    <option value="قم">قم</option>
+                    <option value="مرکزی">مرکزی</option>
+                    <option value="زنجان">زنجان</option>
+                    <option value="مازندران">مازندران</option>
+                    <option value="گلستان">گلستان</option>
+                    <option value="اردبیل">اردبیل</option>
+                    <option value="آذربایجان غربی">آذربایجان غربی</option>
+                    <option value="همدان">همدان</option>
+                    <option value="کردستان">کردستان</option>
+                    <option value="کرمانشاه">کرمانشاه</option>
+                    <option value="لرستان">لرستان</option>
+                    <option value="بوشهر">بوشهر</option>
+                    <option value="کرمان">کرمان</option>
+                    <option value="هرمزگان">هرمزگان</option>
+                    <option value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+                    <option value="یزد">یزد</option>
+                    <option value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+                    <option value="ایلام">ایلام</option>
+                    <option value="کهگلویه و بویراحمد">کهگلویه و بویراحمد</option>
+                    <option value="خراسان شمالی">خراسان شمالی</option>
+                    <option value="خراسان جنوبی">خراسان جنوبی</option>
+                    <option value="البرز">البرز</option>
+                </select>
+                    <span  class="text-red-500 mb-5"></span>
+                    
+            </div>
+                <div class="w-full md:w-2/5 mx-5">
+                <label class="text-gray-800" for="city"> شهر :</label>
+                <select  class="w-full bg-white border p-2  mb-5"  id="city">
+                    <option value="">لطفا استان را انتخاب نمایید</option>
+                </select>
+                    <span  class="text-red-500  mb-5"></span>
+
+            </div>
+             </>
+                <div class="w-full md:w-2/5 mx-5">
+                <label class="text-gray-800" for="city"> آدرس:</label>
+                <textarea class="w-full resize-none border focus:outline-none focus:border-gray-900"></textarea>
+                    <span  class="text-red-500  mb-5"></span>
+
+            </div>
+                <div class="flex w-10/12 mr-6 justify-center lg:justify-end mt-6">
+
+            <button class="bg-green-500 rounded  text-white p-3">
+                    ویرایش مشخصات
+                </button>   
+            </div>
+                
+            </form>
+        </main>
+    </section>
+</section>

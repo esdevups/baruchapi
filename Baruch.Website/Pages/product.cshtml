@@ -13,28 +13,28 @@
 
     </nav>
     <h3 class="text-2xl container mx-auto text-gray-700 border-b p-3">
-                       @Model.product.Title
+        @Model.product.Title
 
     </h3>
     <section class="flex flex-col lg:flex-row container py-2 justify-start items-start">
 
         <div class="grid grid-cols-4 w-5/6 mx-auto  md:w-3/4 md:mx-auto lg:w-2/4 px-2">
-          
-                 <img class="w-full col-span-4 lg:h-96 cursor-pointer album-img"
+
+            <img class="w-full col-span-4 lg:h-96 cursor-pointer album-img"
                  src="https://api.baruch.ir/images/@Model.product.ImageName"
                  alt="">
-            
-               @foreach (var image in Model.product.Images.Take(4))
+
+            @foreach (var image in Model.product.Images.Take(4))
             {
-                 <img class="w-11/12 border mt-2 h-[100px] cursor-pointer album-img"
+                <img class="w-11/12 border mt-2 h-[100px] cursor-pointer album-img"
                  src="https://api.baruch.ir/images/@image.Name"
                  alt="">
             }
-           
+
         </div>
         <div class="container lg:w-2/4 px-2">
             <h1 class="text-2xl text-gray-700 mt-16 border-b p-3">
-               @Model.product.Title
+                @Model.product.Title
             </h1>
             <div class="py-3 rounded-md border flex bg-blue-100 my-3 items-center">
                 <img class="w-7 h-7 mx-1"
@@ -42,9 +42,9 @@
                      alt="">
                 <p class="text-lg">ضمانت سلامت فیزیکی و اصالت کالا</p>
             </div>
-              @if(Model.product.Quantity !=0)
-                {
-                    <div class="py-3 rounded-md border flex bg-green-100 my-3 items-center">
+            @if (Model.product.Quantity != 0)
+            {
+                <div class="py-3 rounded-md border flex bg-green-100 my-3 items-center">
                     <img class="w-7 h-7 mx-1"
                      src="/site/img/icons8-warehouse-80.png"
                      alt="">
@@ -52,29 +52,29 @@
                     <p class="text-lg">موجود در انبار باروخ</p>
 
                 </div>
-                      <div class="text-left text-lg text-green-900">
-               
-                <span class="text-xl">@Model.product.Price.ToString("#,0")</span>
-                <span>ریال</span>
-            </div>
-                
-            }
-        
+                <div class="text-left text-lg text-green-900">
 
-           
-               @if(Model.product.Quantity !=0)
-                {
-            <div class="mt-2">
-                <a asp-page="/Cart/AddTocart" asp-route-id="@Model.product.Id" class="bg-red-500 p-2 rounded-md text-white"
-                  >افزودن به سبد خرید</a>
+                    <span class="text-xl">@Model.product.Price.ToString("#,0")</span>
+                    <span>ریال</span>
                 </div>
-            }else
+
+            }
+
+
+
+            @if (Model.product.Quantity != 0)
             {
-                  <div class="mt-2">
-                <button desable class="bg-red-300 p-2 rounded-md text-white "
-                 >ناموجود
-               
-               </button>
+                <div class="mt-2">
+                    <a asp-page="/Cart/AddTocart" asp-route-id="@Model.product.Id" class="bg-red-500 p-2 rounded-md text-white">افزودن به سبد خرید</a>
+                </div>
+            }
+            else
+            {
+                <div class="mt-2">
+                    <button desable class="bg-red-300 p-2 rounded-md text-white ">
+                        ناموجود
+
+                    </button>
                 </div>
             }
         </div>
@@ -87,7 +87,7 @@
 
         <div class="text-justify w-3/4 mx-auto">
             <p class=" text-base text-gray-600">
-               @Model.product.Text
+                @Model.product.Text
             </p>
         </div>
     </section>
@@ -100,10 +100,10 @@
             <ul class="flex">
                 @foreach (var lable in Model.product.labels)
                 {
-                <li class="p-1 bg-gray-200 mx-1 rounded"><a href="@lable.Url">@lable.Text</a></li>
-                    
+                    <li class="p-1 bg-gray-200 mx-1 rounded"><a href="@lable.Url">@lable.Text</a></li>
+
                 }
-               
+
 
             </ul>
         </div>
@@ -116,16 +116,16 @@
         </h2>
 
         <div class="w-3/4 mx-auto text-gray-600">
-             @foreach (var peop in Model.product.productProps)
+            @foreach (var peop in Model.product.productProps)
             {
-                 <div class="flex mb-2">
-                <p class="text-lg w-2/4 md:w-1/4">@peop.Title</p>
-                <div class="w-2/4 md:w-3/4 border-b pb-3">
-                    <p class="text-sm text-center md:text-right">@peop.Value</p>
+                <div class="flex mb-2">
+                    <p class="text-lg w-2/4 md:w-1/4">@peop.Title</p>
+                    <div class="w-2/4 md:w-3/4 border-b pb-3">
+                        <p class="text-sm text-center md:text-right">@peop.Value</p>
+                    </div>
                 </div>
-            </div>
             }
-           
+
 
         </div>
     </section>
@@ -138,119 +138,83 @@
             <button id="comment-btn" class="bg-red-500 hover:bg-red-700 mr-2 px-2 py-1 rounded text-white"><i class="zmdi zmdi-plus"></i></button>
         </div>
 
-        <div class="w-3/4 mx-auto text-gray-600">
-            <div class="bg-gray-100 p-2 flex rounded mt-2">
-                <img class="rounded-full ml-2 w-16 h-16"
-                     src="img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
-                     alt="">
-                <div>
+        <div class="w-3/4 mx-auto text-gray-600  mb-5">
 
-                    <h3 class="text-blue-800">محمدرضا اسماعیلی</h3>
-                    <p class="text-sm">
-                        
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                        طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                        شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                        کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-              </div>
- </div>
-                 <div class="bg-gray-200 p-2 flex rounded mt-1 mr-8">
-                <img class="rounded-full ml-2 w-16 h-16"
-                     src="img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
+            @foreach (var comment in @Model.product.Comments)
+            {
+                <div class="bg-gray-100 p-2 flex rounded mt-2">
+                    <img class="rounded-full ml-2 w-16 h-16"
+                     src="~/Site/img/icons8-user-64-comment.png"
                      alt="">
-                <div>
+                    <div>
 
-                    <h3 class="text-blue-800">محمدرضا اسماعیلی</h3>
-                    <p class="text-sm">
-                        
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                        طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                        شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                        کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </div>
-     </div>
-               <div class="bg-gray-100 p-2 flex rounded mt-2">
-                <img class="rounded-full ml-2 w-16 h-16"
-                     src="img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
-                     alt="">
-                <div>
+                        <h3 class="text-blue-800 mb-4">@comment.User.Email</h3>
+                        <p class="text-sm leading-7">
 
-                    <h3 class="text-blue-800">محمدرضا اسماعیلی</h3>
-                    <p class="text-sm">
-                        
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                        طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                        شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                        کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
+                            @Html.Raw(comment.Text)
+                        </p>
+                    </div>
                 </div>
-             </div>
-     </div>
-              <div class="bg-gray-100 p-2 flex rounded mt-2">
-                <img class="rounded-full ml-2 w-16 h-16"
-                     src="img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
-                     alt="">
-                <div>
-
-                    <h3 class="text-blue-800">محمدرضا اسماعیلی</h3>
-                    <p class="text-sm">
-                        
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                        طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                        شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                        کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </div>
- </div>
-                   <div class="bg-gray-100 p-2 flex rounded mt-2">
-                <img class="rounded-full ml-2 w-16 h-16"
-                     src="img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg"
-                     alt="">
-                <div>
-
-                    <h3 class="text-blue-800">محمدرضا اسماعیلی</h3>
-                    <p class="text-sm">
-                        
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                        طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای
-                        شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
-                        کتابهای زیادی در شصت و سه درصد گذشته حال و آینده
-                    </p>
-                </div>
-            </div>
+            }
 
 
         </div>
-    </div>
+
+
+
+
     </section>
-  <div id="comment-modal" class="comment-modal hidden bg-black bg-opacity-10">
-            <div id="comment-backdrop" class="bg-black absolute bg-opacity-20 w-full h-full top-0 right-0 z-40"></div>
-            <div class="md:w-3/6 bg-white z-50 flex justify-center items-center shadow-lg border p-3 w-5/6">
-                <form action="" class="w-full ">
-                    <h3 class="py-3 text-lg text-gray-700 text-center" for="">ثبت نظر</h3>
-                    <input type="text" class="p-2 mb-2 w-full focus:outline-none   border focus:border-gray-500" placeholder="عنوان">
-                    
-                    <div id="toolbar-container"></div>
-                    <div id="editor"></div>
+    <div id="comment-modal" class="comment-modal hidden bg-black bg-opacity-10">
+        <div id="comment-backdrop" class="bg-black absolute bg-opacity-20 w-full h-full top-0 right-0 z-40"></div>
+        <div class="md:w-3/6 bg-white z-50 flex justify-center items-center shadow-lg border p-3 w-5/6">
+            <form method="post" class="w-full ">
+                <h3 class="py-3 text-lg text-gray-700 text-center" for="">ثبت نظر</h3>
 
-                    <button class="w-full text-white p-1 mt-2 bg-blue-500">ثبت نظر</button>
-                </form>
-            </div>
-            
+
+                <textarea id="editor1" name="editor1"></textarea>
+                <span asp-validation-for="comment.Text"></span>
+                <input asp-for="comment.Productid" type="hidden" value="@Model.product.Id" />
+                <button type="submit" class="w-full text-white p-1 mt-2 bg-blue-500">ثبت نظر</button>
+            </form>
         </div>
+
+    </div>
 </main>
 <div id="album-modal" class="w-screen z-50 h-screen fixed top-0 right-0 hidden justify-center items-center">
     <div class="p-5 z-50 bg-white rounded-lg shadow-lg flex justify-center items-center">
-        <img class="w-96 h-86" id="modal-img" src="/site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg" alt=""  />
+        <img class="w-96 h-86" id="modal-img" src="/site/img/laura-adai-4tcF4Fe9HiI-unsplash_2.jpg" alt="" />
     </div>
     <div id="album-backdrop" class="w-full h-full absolute bg-opacity-20 bg-black"></div>
 </div>
 @section Scripts{
-<script src="/Site/js/commentModal.js"></script>
+    <script src="/Site/js/commentModal.js"></script>
     <script src="/Site/js/album.js"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+            @if (@Model.Issucsses)
+            {
+              Toastify({
+            text: "با تشکر از نظر شما",
+            duration: 3000,
+
+            newWindow: true,
+
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: false, // Prevents dismissing of toast on hover
+            style: {
+                background: "white",
+                color: "green" ,
+                borderBottom: '2px solid green',
+                padding: '20px'
+            },
+            onClick: function() { } // Callback after click
+        }).showToast();
+        }else{}
+      
+      
+    </script>
 }
