@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.ViewModels;
 namespace API.Controllers
 {
     [Authorize(Roles = "admin")]
@@ -20,9 +21,15 @@ namespace API.Controllers
 
         // POST api/<ArticlelableController>
         [HttpPost]
-        public IActionResult Post([FromBody] ProductLabel lable)
+        public IActionResult Post([FromBody] LableViewModle lable)
         {
-            _ctx.ProductLabel.Add(lable);
+            var lable1 = new ProductLabel()
+            {
+                Text = lable.Text,
+                Url = lable.Url,
+                productid = lable.Parentid
+            };
+            _ctx.ProductLabel.Add(lable1);
             _ctx.SaveChanges();
 
             return Ok();

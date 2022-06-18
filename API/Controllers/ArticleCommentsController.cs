@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Models.ViewModels;
 
 namespace BaruchApi.Controllers
 {
@@ -57,14 +58,22 @@ namespace BaruchApi.Controllers
         // PUT: api/ArticleComments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArticleComment(int id, ArticleComment articleComment)
+        public async Task<IActionResult> PutArticleComment(int id,CommentviewModle articleComment)
         {
             if (id != articleComment.Id)
             {
                 return BadRequest();
             }
+            var comment = new ArticleComment()
+            {
+                Id = articleComment.Id,
+                Text = articleComment.Text,
+                Productid = articleComment.parentid,
+                userid = articleComment.userid,
+                Date = articleComment.Date,
 
-            _context.Entry(articleComment).State = EntityState.Modified;
+            };
+            _context.Entry(comment).State = EntityState.Modified;
 
             try
             {

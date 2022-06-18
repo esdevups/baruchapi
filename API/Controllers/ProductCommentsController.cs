@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BaruchApi;
 using Models;
 using Data;
-
+using Models.ViewModels;
 namespace BaruchApi.Controllers
 {
     [Authorize(Roles = "admin")]
@@ -56,14 +56,24 @@ namespace BaruchApi.Controllers
         // PUT: api/ProductComments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductComment(int id, ProductComment productComment)
+        public async Task<IActionResult> PutProductComment(int id, CommentviewModle productComment)
         {
             if (id != productComment.Id)
             {
                 return BadRequest();
             }
+            var comment = new ProductComment()
+            {
+                Id = productComment.Id,
+                Text = productComment.Text,
+                Productid = productComment.parentid,
+                userid = productComment.userid,
+                Date = productComment.Date,
+               
+            };
+        
 
-            _context.Entry(productComment).State = EntityState.Modified;
+            _context.Entry(comment).State = EntityState.Modified;
 
             try
             {

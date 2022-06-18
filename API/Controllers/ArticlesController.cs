@@ -12,7 +12,7 @@ using Operations.FileOperation;
 
 namespace BaruchApi.Controllers
 {
-    //[Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin")]
 
     [Route("api/[controller]")]
     [ApiController]

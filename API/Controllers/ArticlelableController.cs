@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.ViewModels;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace API.Controllers
@@ -23,9 +24,15 @@ namespace API.Controllers
 
         // POST api/<ArticlelableController>
         [HttpPost]
-        public IActionResult Post([FromBody] ArticleLabel lable)
+        public IActionResult Post([FromBody] LableViewModle lable)
         {
-            _ctx.ArticleLabels.Add(lable);
+            var lable1 = new ArticleLabel()
+            {
+                Text = lable.Text,
+                Url = lable.Url,
+                Articleid = lable.Parentid
+            };
+            _ctx.ArticleLabels.Add(lable1);
             _ctx.SaveChanges();
 
             return Ok();
