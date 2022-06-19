@@ -18,7 +18,7 @@ namespace API.Controllers
             _context = context;
             _cart = cart;
         }
-        [AllowAnonymous]
+      
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> Get()
         {

@@ -1,7 +1,7 @@
 ﻿const footerList = document.getElementById('footer-list');
 const slider = document.getElementById('index-slider');
 async function fetchImages() {
-    const response = await fetch("https://localhost:7196/api/ui");
+    const response = await fetch("https://api.baruch.ir/api/ui");
 
     console.log(response);
     const data = await response.json();

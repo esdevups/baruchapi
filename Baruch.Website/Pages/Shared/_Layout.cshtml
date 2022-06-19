@@ -8,7 +8,7 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
-    <title>باروخ صفحه اصلی</title>
+ 
     <link rel="stylesheet"
           href="/Site/css/App.css">
     <link rel="stylesheet"
@@ -20,6 +20,7 @@
 
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
           <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+@RenderSection("title", required:false)
 
 </head>
 
@@ -40,8 +41,8 @@
                        id="header-logo"
                        class="lg:py-4 pt-2 block">
                         <a href="/" class="mt-2">
-                            <span class="text-red-500 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
-                            <h1 class="text-smooch lg:text-sm text-xs -mt-2 text-red-600">گالری مس باروخ</h1>
+                            <span class="text-orange-500 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
+                            <h1 class="text-smooch lg:text-sm text-xs -mt-2 text-orange-500">مسکده باروخ</h1>
                         </a>
                         <div class="flex lg:pt-5 w-full items-center mr-4">
                             <button id="search-form-btn" class="shadow-lg rounded-full p-2 border-gray-400 border hover:bg-gray-200"><img class="w-5" src="/Site/img/icons8-search-50.png" alt=""></button>
@@ -90,13 +91,10 @@
                         <div class="lg:pt-3 text-gray-600">
 
                             <div class="text-xs mb-3">
-                                <span class="badge absolute bottom-3 md:bottom-0 md:relative bg-red-600">2</span>
+                                <span class="badge absolute bottom-3 md:bottom-0 md:relative bg-orange-400">2</span>
                                 <span class="hidden lg:inline">محصول</span>
                             </div>
-                            <div class="text-xs">
-                                <span class="hidden lg:inline"> جمع کل :</span>
-                                <span class="badge hidden lg:inline bg-red-600">20000 ریال</span>
-                            </div>
+                            
                         </div>
                     </a>
                     <div data-drop="profile-drop" href="#"
@@ -113,7 +111,7 @@
             </div>
         </div>
     </header>
-    <nav id="nav" class="bg-red-500 w-full relative">
+    <nav id="nav" class="bg-orange-400 w-full relative">
         <div class="container-1400 mx-auto px-3 h-16 flex justify-between items-center">
             <div id="burger-menu-btn" class="text-white cursor-pointer lg:cursor-default lg:text-gray-200 flex">
                 <i class="zmdi zmdi-view-list-alt text-white lg:text-gray-200 zmdi-hc-3x"></i>
@@ -146,12 +144,12 @@
     
     <footer class="rounded-t-r-full border-t text-gray-500 mt-5">
         <div class="px-5">
-            <div>
+            <div class="flex justify-center mb-10">
                  <a href="#"
                        id="header-logo"
                        class="lg:py-4 block mb-10">
                         <a href="/" class="mt-2">
-                            <span class="text-red-500 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
+                            <span class="text-orange-500 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
                             <h1 class="text-smooch lg:text-sm text-xs -mt-2 text-red-600">گالری مس باروخ</h1>
                         </a>
             </div>
@@ -233,16 +231,15 @@
         <!-- Burger menu -->
 
         <div id="burger-menu" class="container transition duration-100 overflow-y-auto mx-auto flex flex-col lg:hidden fixed translate-x-80 z-50 top-0 h-full w-80 bg-white">
-            <div class="flex justify-between">
+            <div class="flex justify-start px-3">
 
-                <a href="#"
-                   id="header-logo"
-                   class="lg:py-4 pt-2 block w-32">
-                    <p class="text-md pr-4 mb-2 text-md md:text-lg font-sahel">گالری مس</p>
-                    <h2 class="text-2xl pr-16 ">
-                        <span class="text-white bg-red-600 rounded-md p-1 lg:text-2xl md:text-lg text-md font-sahel">باروخ</span>
-                    </h2>
-                </a>
+               <a href="#"
+                       id="header-logo"
+                       class="lg:py-4 pt-2 block">
+                        <a href="/" class="mt-2">
+                            <span class="text-orange-400 underline font-smooch text-3xl lg:text-5xl">Baruch</span>
+                            <h1 class="text-smooch lg:text-sm text-xs -mt-2 text-orange-500">گالری مس باروخ</h1>
+                        </a>
                 <button id="burger-close" class="mx-2 absolute left-7 top-5"><i class="zmdi zmdi-close zmdi-hc-2x"></i></button>
             </div>
             <h3 class="mb-0 pt-5 pb-4 px-3 text-lg font-sahel">دسته بندی محصولات</h3>

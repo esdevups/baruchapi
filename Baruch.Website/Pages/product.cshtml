@@ -2,6 +2,9 @@
 @model Baruch.Website.Pages.productModel
 @{
 }
+@section title{
+       <title>@Model.product.Title | مسکده باروخ</title>
+}
 <main class="max-w-[1200px] mx-auto">
 
     <nav class="breadcrumb container mx-auto px-2 text-lg text-gray-500">
@@ -65,7 +68,7 @@
             @if (Model.product.Quantity != 0)
             {
                 <div class="mt-2">
-                    <a asp-page="/Cart/AddTocart" asp-route-id="@Model.product.Id" class="bg-red-500 p-2 rounded-md text-white">افزودن به سبد خرید</a>
+                    <a asp-page="/Cart/AddTocart" asp-route-id="@Model.product.Id" class="bg-orange-500 p-2 rounded-md text-white">افزودن به سبد خرید</a>
                 </div>
             }
             else
@@ -135,7 +138,7 @@
             <h2 class="text-2xl text-gray-600 py-2">
                 نظرات
             </h2>
-            <button id="comment-btn" class="bg-red-500 hover:bg-red-700 mr-2 px-2 py-1 rounded text-white"><i class="zmdi zmdi-plus"></i></button>
+            <button id="comment-btn" class="bg-orange-500 hover:bg-red-700 mr-2 px-2 py-1 rounded text-white"><i class="zmdi zmdi-plus"></i></button>
         </div>
 
         <div class="w-3/4 mx-auto text-gray-600  mb-5">
@@ -149,10 +152,10 @@
                     <div>
 
                         <h3 class="text-blue-800 mb-4">@comment.User.Email</h3>
-                        <p class="text-sm leading-7">
+                        <div id="comment-text-container" class="text-sm leading-7">
 
                             @Html.Raw(comment.Text)
-                        </p>
+                        </div>
                     </div>
                 </div>
             }
@@ -193,10 +196,11 @@
         CKEDITOR.replace('editor1');
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script>
-            @if (@Model.Issucsses)
-            {
-              Toastify({
+    
+    
+        <script>
+function show() {
+    Toastify({
             text: "با تشکر از نظر شما",
             duration: 3000,
 
@@ -206,15 +210,19 @@
             position: "right", // `left`, `center` or `right`
             stopOnFocus: false, // Prevents dismissing of toast on hover
             style: {
-                background: "white",
-                color: "green" ,
-                borderBottom: '2px solid green',
-                padding: '20px'
+            background: "white",
+            color: "green" ,
+            borderBottom: '2px solid green',
+            padding: '20px'
             },
             onClick: function() { } // Callback after click
-        }).showToast();
-        }else{}
-      
-      
-    </script>
+            }).showToast();
+
+}
+            
+
+
+        </script>
+  
+
 }

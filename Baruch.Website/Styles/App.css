@@ -98,3 +98,7 @@
 .scale-zero {
     @apply scale-0;
 }
+
+#comment-text-container p {
+    @apply text-sm;
+}

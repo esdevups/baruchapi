@@ -2,10 +2,13 @@
 @model Mesfo.Pages.ProductsModel
 @{
 }
+@section title{
+       <title>@Model.PagingViewModel.products.First().subCategory.Title | مسکده باروخ</title>
+}
 <main>
     <section class="flex flex-col">
         <div class="container relative mx-auto flex justify-between p-7 border-b">
-            <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+            <div class="absolute bg-orange-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
             <a href="">
                 <h3 class="text-2xl text-gray-500">@Model.PagingViewModel.products.First().subCategory.Title </h3>
             </a>
@@ -250,7 +253,7 @@
                             <p class="text-sm font-yekanbold text-gray-600 text-left mx-3">  @i.Price.ToString("#,0") ریال</p>
                             <div class="flex justify-center py-4">
 
-                                <a class="bg-red-500 p-2 rounded-lg text-white"
+                                <a class="bg-orange-500 p-2 rounded-lg text-white"
                            asp-page="product" asp-route-id="@i.Id"><i class="zmdi zmdi-hc-lg zmdi-shopping-cart"></i></a>
                             </div>
                         </div>
@@ -265,7 +268,7 @@
                             <p class="text-sm font-yekanbold text-gray-600 text-left mx-3">  </p>
                             <div class="flex justify-center py-4">
 
-                                <a class="bg-red-200 p-2 rounded-lg text-white"
+                                <a class="bg-orange-200 p-2 rounded-lg text-white"
                           asp-page="product" asp-route-id="@i.Id">ناموجود</a>
                             </div>
                         </div>
@@ -278,9 +281,9 @@
             </div>
             <div page-model="@Model.PagingViewModel.paging"
                  page-action="Products"
-                 page-class="py-2 px-3 leading-tight text-red-500 bg-white border border-red-300 hover:bg-red-100 hover:text-gray-700"
-                 page-class-normal="py-2 px-3 leading-tight text-red-500 bg-white border border-red-300 hover:bg-red-100 hover:text-gray-700"
-                 page-class-selected="py-2 px-3 leading-tight text-gray-900 bg-red-300 border border-red-300 hover:bg-red-100 hover:text-gray-700"
+                 page-class="py-2 px-3 leading-tight text-orange-500 bg-white border border-orange-300 hover:bg-orange-100 hover:text-gray-700"
+                 page-class-normal="py-2 px-3 leading-tight text-orange-500 bg-white border border-orange-300 hover:bg-orange-100 hover:text-gray-700"
+                 page-class-selected="py-2 px-3 leading-tight text-gray-900 bg-orange-300 border border-orange-300 hover:bg-orange-100 hover:text-gray-700"
                  class="rounded-lg flex border-collapse">
             </div>
 

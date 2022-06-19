@@ -1,4 +1,4 @@
-﻿const url = 'https://localhost:7196/api'; //TODO: change this before publishing!!!!!
+﻿const url = 'https://api.baruch.ir/api'; //TODO: change this before publishing!!!!!
 
 
 function popoverStart() {

@@ -45,7 +45,7 @@ namespace Operations.FileOperation
                     images.Add(image);
                 }
                 await _ctx.AddRangeAsync(images);
-                if (string.IsNullOrEmpty(product.ImageName))
+                if (!string.IsNullOrEmpty(product.ImageName))
                 {
                     product.ImageName = images.First().Name;
                     _ctx.Attach(product).State = EntityState.Modified;

@@ -3,6 +3,9 @@
 @{
     var article = Model.articl;
 }
+@section title{
+       <title>@article.Title | باروخ</title>
+}
    <div class="container-1400 mx-auto">
     <div class="grid grid-cols-5">
 
@@ -54,9 +57,62 @@
             </aside>
         </div>
     </div>
+     <section class="container items-start flex flex-col mx-auto">
+        <div class="flex justify-start items-center px-2 w-full">
 
+            <h2 class="text-2xl text-gray-600 py-2">
+                نظرات
+            </h2>
+            <button id="comment-btn" class="bg-orange-500 hover:bg-red-700 mr-2 px-2 py-1 rounded text-white"><i class="zmdi zmdi-plus"></i></button>
+        </div>
+
+        <div class="w-3/4 mx-auto text-gray-600  mb-5">
+
+            @foreach (var comment in @Model.articl.Comments)
+            {
+                <div class="bg-gray-100 p-2 flex rounded mt-2">
+                    <img class="rounded-full ml-2 w-16 h-16"
+                     src="~/Site/img/icons8-user-64-comment.png"
+                     alt="">
+                    <div>
+
+                        <h3 class="text-blue-800 mb-4">@comment.User.Email</h3>
+                        <div id="comment-text-container" class="text-sm leading-7">
+
+                            @Html.Raw(comment.Text)
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+
+
+
+    </section>
+    <div id="comment-modal" class="comment-modal hidden bg-black bg-opacity-10">
+        <div id="comment-backdrop" class="bg-black absolute bg-opacity-20 w-full h-full top-0 right-0 z-40"></div>
+        <div class="md:w-3/6 bg-white z-50 flex justify-center items-center shadow-lg border p-3 w-5/6">
+            <form method="post" class="w-full ">
+                <h3 class="py-3 text-lg text-gray-700 text-center" for="">ثبت نظر</h3>
+
+
+                <textarea id="editor1" name="editor1"></textarea>
+                <span asp-validation-for="comment.Text"></span>
+                <input asp-for="comment.Productid" type="hidden" value="@Model.articl.Id" />
+                <button type="submit" class="w-full text-white p-1 mt-2 bg-blue-500">ثبت نظر</button>
+            </form>
+        </div>
+
+    </div>
                 @section Scripts{
-<script src="/Site/js/commentModal.js"></script>
+  <script src="/Site/js/commentModal.js"></script>
+    <script src="/Site/js/album.js"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
     Toastify({

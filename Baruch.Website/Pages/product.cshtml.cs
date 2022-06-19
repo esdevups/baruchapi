@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Data.D;
 using System.Security.Claims;
+using Microsoft.JSInterop;
 
 namespace Baruch.Website.Pages
 {
@@ -11,18 +12,19 @@ namespace Baruch.Website.Pages
 
         private  ApplicationDbContext _db;
         private IProduct _pr;
-
+     
         public productModel(ApplicationDbContext db, IProduct pr)
         {
             _db = db;
             _pr = pr;
+          
         }
-
 
 
 
         public Product product { get; set; }
         public bool Issucsses { get; set; }
+        public bool Show { get; set; }
         [BindProperty]
         public ProductComment comment { get; set; } 
 
@@ -39,7 +41,7 @@ namespace Baruch.Website.Pages
             {
                 return Redirect($"/identity/account/login?ReturnUrl=/Product?id={comment.Productid}");
             }
-         
+            Show = true;
             comment.Date = DateTime.Now;
             comment.userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
             comment.Text = editor1;
@@ -47,7 +49,8 @@ namespace Baruch.Website.Pages
             await _db.ProductComments.AddAsync(comment);
 
                await _db.SaveChangesAsync();
-            return RedirectToPage($"Product?id={comment.Productid}");
+        
+            return Redirect($"/Product?id={comment.Productid}");
 
 
 

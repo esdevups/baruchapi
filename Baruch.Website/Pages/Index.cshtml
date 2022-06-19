@@ -5,7 +5,9 @@
 
     
 }
-
+@section title{
+       <title>باروخ | مسکده باروخ</title>
+}
 <!-- hero section -->
 <section class="hero mx-auto overflow-hidden">
 
@@ -21,9 +23,11 @@
 
 
 </section>
+
+
 <section class="flex flex-col">
     <div class="container relative mx-auto flex justify-between p-7 border-b ">
-        <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+        <div class="absolute bg-orange-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
         <a href="">
             <h3 class="text-2xl text-gray-500">باروخ کالا های برتر</h3>
         </a>
@@ -40,7 +44,7 @@
             <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
         
         </div>
-        <section class="container-1400 min-w-64 scroll-smooth bg-yellow-200 rounded" 
+        <section class="container-1400 min-w-64 scroll-smooth rounded" 
                   id="c1">
             @foreach  (var i in Model.Products)
             {
@@ -61,7 +65,7 @@
                         </a>
                         <p> @i.Price.ToString("#,0")</p>
                         <a asp-page="/Cart/AddTocart" asp-route-id="@i.Id"
-                       class="bg-red-500 text-white">افزودن به سبد خرید</a>
+                       class="bg-orange-500 text-white">افزودن به سبد خرید</a>
                     </div>
                 </div>
                 }
@@ -80,8 +84,9 @@
 </section>
 
 
+
 <section class="my-5 py-5 border-y">
-    <div class="w-11/12 lg:w-4/6 mx-auto grid grid-cols-4 gap-1 grid-rows-2 justify-center">
+    <div class="w-11/12 lg:w-3/6 mx-auto grid grid-cols-4 gap-1 grid-rows-2 justify-center">
 
         <div class=" col-span-2 row-span-2 relative">
             <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/1221.jpg"  />
@@ -134,15 +139,14 @@
 
 
 
-
 <section class="flex flex-col">
     <div class="container relative mx-auto flex justify-between p-7 border-b ">
-        <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+        <div class="absolute bg-orange-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
         <a href="">
             <h3 class="text-2xl text-gray-500">کالا های برتر</h3>
         </a>
 
-        <a class="text-md text-blue-500"
+        <a class="text-md"
            href=""> مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
     </div>
 
@@ -154,7 +158,7 @@
             <i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i>
         
         </div>
-        <section class="container-1400 min-w-64 scroll-smooth  bg-blue-200"
+        <section class="container-1400 min-w-64 scroll-smooth"
                   id="c2">
             @foreach  (var i in Model.Products)
             {
@@ -175,7 +179,7 @@
                         </a>
                         <p> @i.Price.ToString("#,0")</p>
                         <a asp-page="/Cart/AddTocart" asp-route-id="@i.Id"
-                       class="bg-red-500 text-white">افزودن به سبد خرید</a>
+                       class="bg-orange-500 text-white">افزودن به سبد خرید</a>
                     </div>
                 </div>
                 }
@@ -196,7 +200,7 @@
 
 <section class="flex flex-col">
     <div class="container relative mx-auto flex justify-between p-7 border-b">
-        <div class="absolute bg-red-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
+        <div class="absolute bg-orange-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
         <a href="">
             <h3 class="text-2xl text-gray-500">مقالات باروخ </h3>
         </a>
@@ -219,7 +223,7 @@
             </a>
             <div class="flex justify-between px-2 py-2">
 
-                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i> باروخ</p>
+                <p class="text-left text-xs"><i class="zmdi zmdi-edit"></i>گالری مس باروخ</p>
                 <p class="text-xs">@Operations.Datetime.Persiandate.PersianDate(@item.CreateDate)<i class="zmdi zmdi-calendar"></i></p>
             </div>
         </div>

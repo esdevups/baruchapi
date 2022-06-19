@@ -2,11 +2,15 @@
 @model Baruch.Website.Pages.BlogModel
 @{
 }
+
+@section title{
+       <title>باروخ | مقالات</title>
+}
 <main>
     <section class="flex flex-col">
 
         <section class="flex justify-center my-10">
-            <h3 class="text-center text-2xl">مقالات فروشگاه باروخ</h3>
+            <h3 class="text-center text-2xl">مقالات باروخ</h3>
         </section>
 
         <section class="container flex flex-col overflow-visible justify-center">
@@ -51,9 +55,9 @@
                 {
 
                     <div class="bg-white  border w-80 rounded-lg m-5">
-                        <a href="">  <img class="w-full h-52 rounded-t-lg" src="https://api.baruch.ir/images/@item.ImageName" alt=""></a>
-                        <a href="" class="text-lg block font-yekanbold px-2 mb-2 mt-2 text-gray-700">@item.Title</a>
-                        <p class=" h-16 mb-5 px-2 overflow-hidden text-lg text-gray-600 ">@Mesfo.Internal_Servises.Utilities.SD.GetFirstCharacters(item.Text,200)</p>
+                        <a asp-page="article" asp-route-id="@item.Id">  <img class="w-full h-52 rounded-t-lg" src="https://api.baruch.ir/images/@item.ImageName" alt=""></a>
+                        <a asp-page="article" asp-route-id="@item.Id" class="text-lg block font-yekanbold px-2 mb-2 mt-2 text-gray-700">@item.Title</a>
+                        <p class=" h-16 mb-5 px-2 overflow-hidden text-lg text-gray-600 ">@Mesfo.Internal_Servises.Utilities.SD.GetFirstCharacters(item.Text,100)</p>
                         <div class="px-2">
                             <p class="text-gray-600 text-base"><i class="zmdi zmdi-calendar "></i> @Operations.Datetime.Persiandate.PersianDate(@item.CreateDate)</p>
                         </div>

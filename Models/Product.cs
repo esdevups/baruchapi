@@ -18,7 +18,7 @@ namespace Models
         public string Text { get; set; }
         [Required(ErrorMessage = "وارد کردن قیمت الزامی است")]
         public int Price { get; set; }
-        [Required]
+      
         public string ImageName { get; set; }
         [Required(ErrorMessage = "وارد کردن تعداد موجود در انبار الزامی است")]
     
