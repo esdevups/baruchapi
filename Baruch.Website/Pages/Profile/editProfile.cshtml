@@ -1,0 +1,66 @@
+﻿@page
+@model Baruch.Website.Pages.editProfileModel
+@{
+}
+
+
+@section title{
+       <title>ویرایش مشخصات کاربری</title>
+}
+
+
+<section class="container mx-auto">
+    <section class="grid grid-cols-4 mt-5 gap-10">
+   <partial name="AsidePartial" />
+
+        <main class="col-span-5 lg:col-span-3 shadow-lg p-5 mx-5 lg:mx-0 border lg:h-screen rounded-lg">
+            <form method="post"  class="flex flex-wrap">
+                
+                <div class="w-full lg:w-2/5 mx-5 mb-5">
+                    <label class="text-gray-800">نام و نام خانوادگی</label>
+                <input asp-for="Input.Email" class="focus:outline-none border w-full py-2 rounded focus:border-gray-800" type="text"/>
+                    <span asp-validation-for="Input.Email" class="text-red-500  mb-5"></span>
+
+                </div>
+                  <div class="w-full md:w-2/5 mx-5 mb-5">
+                    <label class="text-gray-800">ایمیل</label>
+                <input disabled value="@User.Identity.Name" class="focus:outline-none bg-gray-200 border w-full py-2 rounded focus:border-gray-800" type="text"/>
+                    
+
+                </div>
+                
+                  
+                
+                  <div class="w-full md:w-2/5 mx-5 mb-5">
+                    <label class="text-gray-800">شماره تلفن</label>
+                <input asp-for="Input.Phone" class="focus:outline-none border w-full py-2 rounded focus:border-gray-800" type="number"/>
+                    <span asp-validation-for="Input.Phone" class="text-red-500  mb-5"></span>
+
+                </div>
+
+              
+             <div class="w-full md:w-2/5 mx-5">
+                <label class="text-gray-800" for="postal-code"> کد پستی:</label>
+                <input asp-for="Input.Postalcode" class="focus:outline-none border w-full py-2 rounded focus:border-gray-800" type="number"></input>
+                    <span  class="text-red-500  mb-5"></span>
+                    <span asp-validation-for="Input.Postalcode" class="text-red-500  mb-5"></span>
+
+            </div>
+                <div class="w-full md:w-2/5 mx-5">
+                <label class="text-gray-800" for="city"> آدرس:</label>
+                <textarea asp-for="Input.Adress" class="w-full resize-none border h-52 focus:outline-none focus:border-gray-900"></textarea>
+                    <span  class="text-red-500  mb-5"></span>
+                    <span asp-validation-for="Input.Adress" class="text-red-500  mb-5"></span>
+
+            </div>
+                <div class="flex w-10/12 mr-6 justify-center lg:justify-end mt-6">
+
+            <button type="submit" class="bg-green-500 rounded  text-white p-3">
+                    ویرایش مشخصات
+                </button>   
+            </div>
+              
+            </form>
+        </main>
+    </section>
+</section>

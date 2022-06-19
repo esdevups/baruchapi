@@ -1,26 +1,40 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using Models
+@using System.Security.Claims
+
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" >
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div data-drop="profile-drop" href="#"
+         class="flex drop-button z-50 md:ml-5 relative hover:-translate-y-1 transition duration-100 ease-in hover:shadow-lg p-1 rounded-2xl flex-col lg:flex-row justify-center">
+         
+            <img class=" w-10 h-10 lg:w-auto lg:h-auto"
+             src="/Site/img/icons8-user-64.png"
+             alt="">
+            <span class="text-xs mt-2 font-sahel hidden lg:inline">@User.FindFirstValue(ClaimTypes.Email)</span>
+
+        </div>
+      
+    }
+    else
+    {
+
+         <div class="mt-5 text-gray-700">
+
+                    <a
+                       asp-area="Identity" asp-page="/Account/Login"
+                        class="text-sm mt-2 hover:text-gray-900  font-yekanbold"
+                    >ورود</a>
+                    /
+                    <a
+                       asp-area="Identity" asp-page="/Account/Register"
+                        class="text-sm mt-2 hover:text-gray-900 font-yekanbold"
+                    >ثبت نام</a>
+                </div>
+       
+    }
 </ul>

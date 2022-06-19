@@ -30,7 +30,7 @@
                                 <input onchange="this.form.submit()" checked class="hidden" name="type" value="asc" id="descending" type="radio"><label id="descending-label" class="p-1 border-4 block w-20 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="descending"><i class="zmdi zmdi-sort-amount-desc"></i> نزولی</label>
                             </div>
                             <div class="mx-1 my-0.5 sm:my-2">
-                                <input onchange="this.form.submit()" class="hidden" name="type" id="ascending" type="radio"><label id="ascending-label" class="p-1 w-20 block border-4 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="ascending"><i class="zmdi zmdi-sort-amount-asc"></i> صعودی</label>
+                                <input onchange="this.form.submit()" class="hidden" name="type" id="ascending" type="radio"><label id="ascending-label" class="p-1 w-20 flex border-4 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="ascending"><i class="zmdi zmdi-sort-amount-asc"></i> صعودی</label>
 
                             </div>
                         }
@@ -41,7 +41,7 @@
                                 <input onchange="this.form.submit()" class="hidden" name="type" value="asc" id="descending" type="radio"><label id="descending-label" class="p-1 border-4 block w-20 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="descending"><i class="zmdi zmdi-sort-amount-desc"></i> نزولی</label>
                             </div>
                             <div class="mx-1 my-0.5 sm:my-2">
-                                <input checked onchange="this.form.submit()" class="hidden" name="type" id="ascending" type="radio"><label id="ascending-label" class="p-1 w-20 block border-4 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="ascending"><i class="zmdi zmdi-sort-amount-asc"></i> صعودی</label>
+                                <input checked onchange="this.form.submit()" class="hidden" name="type" id="ascending" type="radio"><label id="ascending-label" class="p-1 flex border-4 border-gray-300 rounded-sm hover:bg-gray-200 cursor-pointer" for="ascending"><i class="zmdi zmdi-sort-amount-asc"></i><span>صعودی</span></label>
 
                             </div>
                         }
@@ -57,7 +57,7 @@
                     <div class="bg-white  border w-80 rounded-lg m-5">
                         <a asp-page="article" asp-route-id="@item.Id">  <img class="w-full h-52 rounded-t-lg" src="https://api.baruch.ir/images/@item.ImageName" alt=""></a>
                         <a asp-page="article" asp-route-id="@item.Id" class="text-lg block font-yekanbold px-2 mb-2 mt-2 text-gray-700">@item.Title</a>
-                        <p class=" h-16 mb-5 px-2 overflow-hidden text-lg text-gray-600 ">@Mesfo.Internal_Servises.Utilities.SD.GetFirstCharacters(item.Text,100)</p>
+                        <p class=" h-16 mb-5 px-2 overflow-hidden text-lg text-gray-600 ">@Mesfo.Internal_Servises.Utilities.SD.GetFirstCharacters(item.Text,73)</p>
                         <div class="px-2">
                             <p class="text-gray-600 text-base"><i class="zmdi zmdi-calendar "></i> @Operations.Datetime.Persiandate.PersianDate(@item.CreateDate)</p>
                         </div>

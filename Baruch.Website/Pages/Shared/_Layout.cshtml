@@ -97,15 +97,7 @@
                             
                         </div>
                     </a>
-                    <div data-drop="profile-drop" href="#"
-                       class="flex drop-button z-50 md:ml-5 relative hover:-translate-y-1 transition duration-100 ease-in hover:shadow-lg p-1 rounded-2xl flex-col lg:flex-row justify-center">
-
-                        <img class=" w-10 h-10 lg:w-auto lg:h-auto"
-                             src="/Site/img/icons8-user-64.png"
-                             alt="">
-                        <span class="text-xs mt-2 font-sahel hidden lg:inline">محمدحسین خالداری</span>
-
-                    </div>
+               <partial name="_LoginPartial" />
                 
                 </div>
             </div>
@@ -130,10 +122,10 @@
       <div id="profile-drop" class="fixed hidden border shadow-lg z-40 w-52 top-20 left-0 md:left-32 h-48 bg-white">
                         <div class="flex flex-col w-full">
                             <ul>
-                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs" href="">داشبورد</a></li>
-                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs zmdi-" href="">تغییر مشخصات کاربری</a></li>
+                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs"  asp-page="Profile/dashboard">داشبورد</a></li>
+                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs zmdi-" asp-page="Profile/editprofile">تغییر مشخصات کاربری</a></li>
                                 <li class="p-1  my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs" href="">تغییر رمز عبور</a></li>
-                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs" href="">خروج از حساب کاربری</a></li>
+                                <li class="p-1 my-2 text-xs"> <i class="zmdi zmdi-dot-circle"></i> <a class="text-xs"asp-area="Identity" asp-page="/account/logout">خروج از حساب کاربری</a></li>
                             </ul>
                         </div>
                     </div>

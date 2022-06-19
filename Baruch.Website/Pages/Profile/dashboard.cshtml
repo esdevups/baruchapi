@@ -2,11 +2,13 @@
 @model Baruch.Website.Pages.dashbordModel
 @{
 }
-
+@section title{
+       <title>داشبورد</title>
+}
 
 <section class="container mx-auto">
     <section class="grid grid-cols-4 mt-5 gap-10">
-   
+   <partial name="AsidePartial" />
         <main class="col-span-5 lg:col-span-3 shadow-lg p-5 mx-5 lg:mx-0 border lg:h-screen rounded-lg">
             <div class="border rounded p-5">
 
@@ -18,7 +20,7 @@
                     <h4 class="text-sm mx-16 text-nowrap mb-8"><span class="text-gray-800">کد پستی:</span> <span class="text-gray-500 font-bold">@Model.Userl.Postalcode</span></h4>
                     <h4 class="text-sm mx-16 text-nowrap mb-8"><span class="text-gray-800">آدرس ایمیل:</span> <span class="text-gray-500 font-bold">@Model.Userl.UserName</span></h4>
 
-                    <h4 class="text-sm mx-16"><span class="text-gray-800">آدرس:</span> <span class="text-gray-500 font-bold"> خیابان شهدا کوچه 7</span></h4>
+                    <h4 class="text-sm mx-16"><span class="text-gray-800">آدرس:</span> <span class="text-gray-500 font-bold"> @Model.Userl.Address</span></h4>
 
                 </div>
                 <div class="flex justify-center lg:justify-end mt-6">

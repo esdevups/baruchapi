@@ -2,7 +2,7 @@
 {
     public static class SD
     {
-        public const int Pagingcuont = 9;
+        public const int Pagingcuont = 8;
 
 
         //Create a method that takes an input text and returns the first 100 characters
@@ -15,7 +15,7 @@
 
             return text.Length <= numberOfCharacters
                 ? text
-                : text.Substring(0, numberOfCharacters);
+                : text.Substring(0, numberOfCharacters) + "...";
         }
     }
 
