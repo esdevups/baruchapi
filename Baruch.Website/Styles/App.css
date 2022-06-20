@@ -100,5 +100,9 @@
 }
 
 #comment-text-container p {
-    @apply text-sm;
+    @apply text-base;
+}
+
+.pixelated {
+    image-rendering: pixelated;
 }

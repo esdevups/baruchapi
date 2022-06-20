@@ -16,8 +16,8 @@
         
 
         <!-- Control buttons -->
-        <button class="btn btn-next bg-black text-white"><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i></button>
-        <button class="btn btn-prev text-white bg-black"><i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i></button>
+        <button class="btn btn-next bg-black text-white z-20 absolute"><i class="zmdi zmdi-chevron-right zmdi-hc-2x"></i></button>
+        <button class="btn btn-prev text-white bg-black z-20 absolute"><i class="zmdi zmdi-chevron-left zmdi-hc-2x"></i></button>
     </div>
 
 
@@ -29,11 +29,10 @@
     <div class="container relative mx-auto flex justify-between p-7 border-b ">
         <div class="absolute bg-orange-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
         <a href="">
-            <h3 class="text-2xl text-gray-500">باروخ کالا های برتر</h3>
+            <h3 class="text-2xl text-gray-500">پرفروش ترین ها</h3>
         </a>
 
-        <a class="text-md text-blue-500"
-           href=""> مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
+     
     </div>
 
     </div>
@@ -46,7 +45,7 @@
         </div>
         <section class="container-1400 min-w-64 scroll-smooth rounded" 
                   id="c1">
-            @foreach  (var i in Model.Products)
+            @foreach  (var i in Model.Products.OrderByDescending(o=>o.OrderDetails.Select(o=>o.Count).Sum()).Take(10))
             {
                 @if (i.Quantity != 0)
                 {
@@ -86,11 +85,11 @@
 
 
 <section class="my-5 py-5 border-y">
-    <div class="w-11/12 lg:w-3/6 mx-auto grid grid-cols-4 gap-1 grid-rows-2 justify-center">
+    <div class="w-11/12 lg:w-7/12 mx-auto grid grid-cols-4 gap-5 grid-rows-2 justify-center">
 
         <div class=" col-span-2 row-span-2 relative">
             <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/1221.jpg"  />
-            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[0].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[0].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 rounded-lg absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
 
                      <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[0].Title</h3>
             </a>
@@ -100,7 +99,7 @@
 
         <div class=" relative">
             <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/121753958.jpg"  />
-            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[1].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[1].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 rounded-lg absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
 
                      <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[1].Title</h3>
             </a>
@@ -109,7 +108,7 @@
 
         <div class=" relative">
             <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/fdb25b94c8d7bccf349f4d021be09533.jpg"  />
-            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[2].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[2].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 rounded-lg absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
 
                      <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[2].Title</h3>
             </a>
@@ -127,7 +126,7 @@
 
         <div class="col-start-4 relative">
             <img class="object-cover w-full h-full" src="https://baruch.ir/Site/img/3037027.png"  />
-            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[4].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
+            <a asp-page="products" asp-route-Category="@Model.subCategories.ToArray()[4].ID" class="bg-orange-500 transition duration-200 ease-in hover:bg-opacity-0 rounded-lg absolute top-0 right-0  w-full h-full bg-opacity-20 flex justify-center items-center">
 
                     <h3 class="text-xs md:text-xl text-gray-200 p-2 bg-gray-900 bg-opacity-20">@Model.subCategories.ToArray()[4].Title</h3>
             </a>
@@ -143,11 +142,10 @@
     <div class="container relative mx-auto flex justify-between p-7 border-b ">
         <div class="absolute bg-orange-400 w-5 h-3 rounded-l-lg right-0 top-10"></div>
         <a href="">
-            <h3 class="text-2xl text-gray-500">کالا های برتر</h3>
+            <h3 class="text-2xl text-gray-500">جدید ترین محصولات</h3>
         </a>
 
-        <a class="text-md"
-           href=""> مشاهده بیشتر <i class="zmdi zmdi-arrow-left"></i></a>
+       
     </div>
 
     </div>
@@ -160,7 +158,7 @@
         </div>
         <section class="container-1400 min-w-64 scroll-smooth"
                   id="c2">
-            @foreach  (var i in Model.Products)
+            @foreach  (var i in Model.Products.OrderByDescending(o=>o.CreateDate).Take(10))
             {
                 @if (i.Quantity != 0)
                 {
@@ -211,7 +209,7 @@
 
     
     <section class="container grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-5 text-gray-700 justify-center">
-        @foreach (var item in Model.Articles)
+        @foreach (var item in Model.Articles.OrderByDescending(a=>a.CreateDate))
         {
                <div class="bg-white my-5 lg:mx-2 mx-5 w-72 md:w-auto rounded-2xl shadow-lg">
                     <a asp-page="article" asp-route-id="@item.Id"  class="thumbnail">

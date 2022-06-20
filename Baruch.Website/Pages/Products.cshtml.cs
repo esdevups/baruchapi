@@ -29,7 +29,8 @@ namespace Mesfo.Pages
                 products =  _ctx.GetById(Category).Result.products,
 
             };
-         
+            if (PagingViewModel.products.Count == 0)
+                return Redirect("/");
             StringBuilder param = new StringBuilder();
             param.Append("/Products?pageId=:");
 

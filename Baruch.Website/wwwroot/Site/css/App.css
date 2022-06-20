@@ -633,10 +633,6 @@ video {
   left: 0px;
 }
 
-.bottom-3 {
-  bottom: 0.75rem;
-}
-
 .top-20 {
   top: 5rem;
 }
@@ -663,6 +659,10 @@ video {
 
 .z-50 {
   z-index: 50;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .z-30 {
@@ -1019,10 +1019,6 @@ video {
   width: 83.333333%;
 }
 
-.w-24 {
-  width: 6rem;
-}
-
 .max-w-\[1200px\] {
   max-width: 1200px;
 }
@@ -1104,8 +1100,8 @@ video {
   justify-content: space-around;
 }
 
-.gap-1 {
-  gap: 0.25rem;
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .gap-10 {
@@ -1561,14 +1557,14 @@ video {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
 .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 
 .text-green-900 {
@@ -1802,8 +1798,14 @@ video {
 }
 
 #comment-text-container p {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.pixelated {
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: pixelated;
 }
 
 .hover\:-translate-y-1:hover {
@@ -1925,14 +1927,6 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:relative {
-    position: relative;
-  }
-
-  .md\:bottom-0 {
-    bottom: 0px;
-  }
-
   .md\:left-32 {
     left: 8rem;
   }
@@ -2043,8 +2037,8 @@ video {
     height: auto;
   }
 
-  .lg\:w-3\/6 {
-    width: 50%;
+  .lg\:w-7\/12 {
+    width: 58.333333%;
   }
 
   .lg\:w-2\/4 {

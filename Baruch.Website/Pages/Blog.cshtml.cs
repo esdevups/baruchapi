@@ -44,12 +44,12 @@ namespace Baruch.Website.Pages
                     if (type == "asc")
                     {
                         PagingViewModel.Articles = _ctx.Articles
-                    .OrderBy(o => o.CreateDate).ToList();
+                    .OrderByDescending(o => o.CreateDate).ToList();
                     }
                     else
                     {
                         PagingViewModel.Articles = _ctx.Articles
-                     .OrderByDescending(o => o.CreateDate).ToList();
+                     .OrderBy(o => o.CreateDate).ToList();
                     }
 
                     break;

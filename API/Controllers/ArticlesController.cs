@@ -165,7 +165,7 @@ namespace BaruchApi.Controllers
         [HttpDelete("Deletefile/{filename}")]
         public async Task<IActionResult> dFile(string filename)
         {
-            if (await _file.DeleteFile(filename))
+            if (await _file.DeleteSingleFile(filename))
                 return Ok();
             else
                 return NotFound();

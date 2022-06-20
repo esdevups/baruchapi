@@ -135,11 +135,11 @@ namespace BaruchApi.Controllers
             var product = await _context.Products.Include(c => c.Comments).Include(i=>i.Images).SingleOrDefaultAsync(i => i.Id == id);
             try
             {
-              await  _file.DeleteFile(product.ImageName);
+              await  _file.DeleteSingleFile(product.ImageName);
 
                 foreach(var image in product.Images)
                 {
-                    await _file.DeleteFile(image.Name);
+                    await _file.DeleteSingleFile(image.Name);
                 }
                 _context.Images.RemoveRange(product.Images);
                
@@ -184,7 +184,7 @@ namespace BaruchApi.Controllers
         [HttpDelete("Deletefile/{filename}")]
         public async Task<IActionResult> dFile(string filename)
         {
-            if (await _file.DeleteFile(filename))
+            if (await _file.DeleteSingleFile(filename))
                 return Ok();
             else
                 return NotFound();
